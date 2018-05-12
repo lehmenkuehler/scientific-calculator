@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/menuModeLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/HeadlineAngularMode"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@drawable/menu_headline"
+            android:gravity="center"
+            android:text="Angular Mode"
+            android:textAllCaps="true"
+            android:textColor="@color/MENU_HEADLINE_TEXT"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+        <LinearLayout
+            android:id="@+id/ElementAngularMode"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/menu_element_gradient"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/ButtonAngularModeRAD"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:background="@drawable/mode_button_disabled"
+                android:text="rad"
+                tools:ignore="ButtonStyle,HardcodedText" />
+
+            <Button
+                android:id="@+id/ButtonAngularModeDEG"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:background="@drawable/mode_button_disabled"
+                android:text="deg"
+                tools:ignore="ButtonStyle,HardcodedText" />
+
+            <Button
+                android:id="@+id/ButtonAngularModeGRAD"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:background="@drawable/mode_button_disabled"
+                android:text="grad"
+                tools:ignore="ButtonStyle,HardcodedText" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/HeadlineAngularModePolar"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@drawable/menu_headline"
+            android:gravity="center"
+            android:text="Angular Mode (Polar)"
+            android:textAllCaps="true"
+            android:textColor="@color/MENU_HEADLINE_TEXT"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+        <LinearLayout
+            android:id="@+id/ElementAngularModePolar"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/menu_element_gradient"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/ButtonAngularModePolarRAD"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:background="@drawable/mode_button_disabled"
+                android:text="rad"
+                tools:ignore="ButtonStyle,HardcodedText" />
+
+            <Button
+                android:id="@+id/ButtonAngularModePolarDEG"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:background="@drawable/mode_button_disabled"
+                android:text="deg"
+                tools:ignore="ButtonStyle,HardcodedText" />
+
+            <Button
+                android:id="@+id/ButtonAngularModePolarGRAD"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:background="@drawable/mode_button_disabled"
+                android:text="grad"
+                tools:ignore="ButtonStyle,HardcodedText" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/HeadlineNumeralMode"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@drawable/menu_headline"
+            android:gravity="center"
+            android:text="Numeral Mode"
+            android:textAllCaps="true"
+            android:textColor="@color/MENU_HEADLINE_TEXT"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+
+        <LinearLayout
+            android:id="@+id/ElementNumeralMode"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/menu_element_gradient"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/ButtonNumeralModeBIN"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:background="@drawable/mode_button_disabled"
+                android:text="bin"
+                tools:ignore="ButtonStyle,HardcodedText" />
+
+            <Button
+                android:id="@+id/ButtonNumeralModeOCT"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:background="@drawable/mode_button_disabled"
+                android:text="oct"
+                tools:ignore="ButtonStyle,HardcodedText" />
+
+            <Button
+                android:id="@+id/ButtonNumeralModeDEC"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:background="@drawable/mode_button_disabled"
+                android:text="dec"
+                tools:ignore="ButtonStyle,HardcodedText" />
+
+            <Button
+                android:id="@+id/ButtonNumeralModeHEX"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:background="@drawable/mode_button_disabled"
+                android:text="hex"
+                tools:ignore="ButtonStyle,HardcodedText" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/HeadlineComplexMode"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@drawable/menu_headline"
+            android:gravity="center"
+            android:text="Output formatting"
+            android:textAllCaps="true"
+            android:textColor="@color/MENU_HEADLINE_TEXT"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+        <LinearLayout
+            android:id="@+id/ElementComplexMode"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/menu_element_gradient"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/ButtonComplexModeRECT"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:background="@drawable/mode_button_disabled"
+                android:text="rect"
+                tools:ignore="ButtonStyle,HardcodedText" />
+
+            <Button
+                android:id="@+id/ButtonComplexModePOLAR"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:background="@drawable/mode_button_disabled"
+                android:text="polar"
+                tools:ignore="ButtonStyle,HardcodedText" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/HeadlineNotationMode"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@drawable/menu_headline"
+            android:gravity="center"
+            android:text="Notation"
+            android:textAllCaps="true"
+            android:textColor="@color/MENU_HEADLINE_TEXT"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+        <LinearLayout
+            android:id="@+id/ElementNotationMode"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/menu_element_gradient"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/ButtonNotationModeDEC"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:background="@drawable/mode_button_disabled"
+                android:text="dec"
+                tools:ignore="ButtonStyle,HardcodedText" />
+
+            <Button
+                android:id="@+id/ButtonNotationModeSCI"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:background="@drawable/mode_button_disabled"
+                android:text="sci"
+                tools:ignore="ButtonStyle,HardcodedText" />
+
+            <Button
+                android:id="@+id/ButtonNotationModeENG"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:background="@drawable/mode_button_disabled"
+                android:text="eng"
+                tools:ignore="ButtonStyle,HardcodedText" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/ButtonClose"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/menu_button"
+        android:text="placeholder"
+        android:textColor="@color/MENU_BUTTON_TEXT"
+        android:textSize="12sp"
+        tools:ignore="HardcodedText" />
+
+</LinearLayout>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#638b8a</color>
+
+    <color name="GLOW">#1effffff</color>
+
+    <color name="BUTTON_TEXT">#e9e9e9</color>
+    <color name="BUTTON_TEXT_2ND">#c8e8ed</color>
+    <color name="BUTTON_TEXT_3RD">#efe0d8</color>
+    <color name="TEXTVIEW_TEXT_1">#50a1af</color>
+    <color name="TEXTVIEW_TEXT_2">#c66840</color>
+    <color name="TEXTVIEW_OUTPUT_TEXT">#393939</color>
+
+    <color name="DISPLAY_MODE_TEXT">#64000000</color>
+    <color name="DISPLAY_INPUT_BACKGROUND">#c0c0c0</color>
+
+    <color name="DISPLAY_INDICATOR">#b9b9b6ae</color>
+    <color name="DISPLAY_INPUT_FUNCTIONS">#8b8b8b</color>
+    <color name="DISPLAY_INPUT_CONSTANTS">#636363</color>
+    <color name="DISPLAY_INPUT_FIGURES">#484848</color>
+    <color name="DISPLAY_INPUT_PHANTOMS">#b6b6b6</color>
+    <color name="DISPLAY_INPUT_OPERATORS">#58605f</color>
+    <color name="DISPLAY_INPUT_BRACKETS">#a2b4b2</color>
+    <color name="DISPLAY_INPUT_GENERAL">#595959</color>
+
+
+    <color name="MENU_BACKGROUND">#71000000</color>.
+    <color name="MENU_CONVERT_HEADLINE_VALUE">#786e7b</color>
+    <color name="MENU_ELEMENT_TEXT_PRIMARY">#5a5a5a</color>
+    <color name="MENU_ELEMENT_TEXT_SECONDARY">#8595a1</color>
+    <color name="MENU_HEADLINE_TEXT">#646464</color>
+    <color name="MENU_BUTTON_TEXT">#3c3c3c</color>
+
+</resources>

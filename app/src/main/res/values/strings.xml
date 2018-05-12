@@ -1,0 +1,344 @@
+<resources>
+    <string name="app_name">Calculator</string>
+    <string name="title_activity_main">Calculator</string>
+
+    <string name="SHARED_PREFERENCES_HISTORY">PREFERENCE_FILE_HISTORY</string>
+    <string name="SHARED_PREFERENCES_SETTINGS">SHARED_PREFERENCES_SETTINGS</string>
+    <string name="SHARED_PREFERENCES_LOG">SHARED_PREFERENCES_LOG</string>
+
+    <string name="MENU_HEADLINE_VERSION_DATA">Version Change Log</string>
+    <string name="WELCOMING_MESSAGE"><![CDATA[
+
+    <b>Version 1.1 (21/05/2017)</b><br>
+    &bull; Backspace crash bug<br>
+    &bull; Landscape layout<br>
+    &bull; UI settings<br>
+    &bull; Notation settings<br>
+    &bull; Random and cis functions<br>
+    &bull; Minor design tweaks<br>
+    &bull; New icon<br>
+    &bull; Square root performance<br>
+
+    <br>
+
+    <b>Version 1.0 (02/05/2017)</b><br>
+    &bull; Initial release
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    ]]></string>
+
+    <string name="MENU_HEADLINE_REVIEW">Hey there!</string>
+    <string name="REVIEW_PLEA"><![CDATA[
+    <b>Thanks for using my calculator!</b><br>
+    If you like it so far, please support me by leaving a rating in the Google PlayStore!
+    ]]></string>
+    <string name="MENU_REVIEW_RATE_NOW">Rate now</string>
+
+    <string name="shift_enabled">2nd</string>
+    <string name="shift_disabled">   </string>
+
+    <string name="ERROR_DIVIDE_BY_ZERO">ERROR: DIVIDE BY ZERO</string>
+    <string name="ERROR_ARGUMENT_OUT_OF_RANGE">ERROR: argument is out of range</string>
+    <string name="ERROR_FACTORIAL_DOMAIN">ERROR: n must be positive integer</string>
+    <string name="ERROR_SYNTAX">ERROR: Invalid syntax</string>
+    <string name="ERROR_MISSING_ARGUMENT">ERROR: missing argument</string>
+    <string name="ERROR_ARGUMENT_MUST_BE_POSITIVE_INTEGER">ERROR: argument must be positive integer</string>
+
+    <string name="TOAST_TOGGLE_OUTPUT_ERROR1">EXECUTE CALCULATION FIRST</string>
+
+    <string name="title_activity_settings">Settings</string>
+
+    <string name="CONVERT_DISTANCE">Distance</string>
+    <string name="CONVERT_AREA">Area</string>
+    <string name="CONVERT_VOLUME">Volume</string>
+    <string name="CONVERT_MASS">Mass</string>
+    <string name="CONVERT_DENSITY">Density</string>
+    <string name="CONVERT_VELOCITY">Velocity</string>
+    <string name="CONVERT_TIME">Time</string>
+    <string name="CONVERT_ANGLE">Angle</string>
+    <string name="CONVERT_FREQUENCY">Frequency</string>
+    <string name="CONVERT_FORCE">Force</string>
+    <string name="CONVERT_TORQUE">Torque</string>
+    <string name="CONVERT_PRESSURE">Pressure</string>
+    <string name="CONVERT_ENERGY">Energy</string>
+    <string name="CONVERT_POWER">Power</string>
+    <string name="CONVERT_TEMPERATURE">Temperature</string>
+    <string name="CONVERT_DATA_SIZE">Data Size</string>
+
+    <string name="MENU_HEADLINE_CONSTANTS">Constants</string>
+    <string name="MENU_HEADLINE_PREFIXES">Prefixes</string>
+    <string name="MENU_HEADLINE_FUNCTIONS">Functions</string>
+    <string name="MENU_HEADLINE_HISTORY">History</string>
+    <string name="MENU_HEADLINE_CONVERT_1">Convert</string>
+    <string name="MENU_HEADLINE_CONVERT_2">Select Source Unit</string>
+    <string name="MENU_HEADLINE_CONVERT_3">Converted Values</string>
+    <string name="MENU_HEADLINE_MODE">Mode</string>
+
+    <string name="MENU_HISTORY_EMPTY">History is empty!</string>
+
+    <string name="MENU_BUTTON_EXIT">Close</string>
+    <string name="MENU_BUTTON_RETURN">Return</string>
+    <string name="MENU_BUTTON_CLEAR">Clear</string>
+    <string name="MENU_BUTTON_LATER">Later</string>
+    <string name="MENU_BUTTON_NEVER">Never</string>
+
+    <string name="FUNCTIONS_TRIGONOMETRIC_AND_HYPERBOLIC">Trigonometric and Hyperbolic</string>
+    <string name="FUNCTIONS_EXPONENTS_AND_LOGARITHMS">Exponents and Logarithms</string>
+
+    <string name="FUNCTION_SINE">Sine</string>
+    <string name="FUNCTION_COSINE">Cosine</string>
+    <string name="FUNCTION_TANGENT">Tangent</string>
+    <string name="FUNCTION_COSECANT">Cosecant</string>
+    <string name="FUNCTION_SECANT">Secant</string>
+    <string name="FUNCTION_COTANGENT">Cotangent</string>
+    <string name="FUNCTION_ARCSINE">Arcsine</string>
+    <string name="FUNCTION_ARCCOSINE">Arccosine</string>
+    <string name="FUNCTION_ARCTANGENT">Arctangent</string>
+    <string name="FUNCTION_HYPERBOLIC_SINE">Hyperbolic Sine</string>
+    <string name="FUNCTION_HYPERBOLIC_COSINE">Hyperbolic Cosine</string>
+    <string name="FUNCTION_HYPERBOLIC_TANGENT">Hyperbolic Tangent</string>
+    <string name="FUNCTION_HYPERBOLIC_AREASINE">Area Hyperbolic Sine</string>
+    <string name="FUNCTION_HYPERBOLIC_AREACOSINE">Area Hyperbolic Cosine</string>
+    <string name="FUNCTION_HYPERBOLIC_AREATANGENT">Area Hyperbolic Tangent</string>
+
+    <string name="FUNCTION_SQUARE_ROOT">Square Root</string>
+    <string name="FUNCTION_CUBIC_ROOT">Cubic Root</string>
+    <string name="FUNCTION_NTH_ROOT">nth Root</string>
+    <string name="FUNCTION_NATURAL_LOGARITHM">Natural Logarithm</string>
+    <string name="FUNCTION_COMMON_LOGARITHM">Common Logarithm</string>
+    <string name="FUNCTION_NTH_LOGARITHM">nth Logarithm</string>
+    <string name="FUNCTION_EXPONENTIAL">Exponential Function</string>
+    <string name="FUNCTION_INVERSE">Inverse Function</string>
+
+
+    <string name="UNIT_FEMTOMETRE">Femtometre</string>
+    <string name="UNIT_PICOMETRE">Picometre</string>
+    <string name="UNIT_ANGSTROEM">Ångström</string>
+    <string name="UNIT_NANOMETRE">Nanometre</string>
+    <string name="UNIT_MICROMETRE">Micrometre</string>
+    <string name="UNIT_MILLIMETRE">Millimetre</string>
+    <string name="UNIT_CENTIMETRE">Centimetre</string>
+    <string name="UNIT_DECIMETRE">Decimetre</string>
+    <string name="UNIT_METRE">Metre</string>
+    <string name="UNIT_DECAMETRE">Decametre</string>
+    <string name="UNIT_HECTOMETRE">Hectometre</string>
+    <string name="UNIT_KILOMETRE">Kilometre</string>
+    <string name="UNIT_MEGAMETRE">Megametre</string>
+    <string name="UNIT_GIGAMETRE">Gigametre</string>
+    <string name="UNIT_THOU">Thou</string>
+    <string name="UNIT_INCH">Inch</string>
+    <string name="UNIT_FOOT">Foot</string>
+    <string name="UNIT_YARD">Yard</string>
+    <string name="UNIT_CHAIN">Chain</string>
+    <string name="UNIT_FURLONG">Furlong</string>
+    <string name="UNIT_INTERNATIONAL_MILE">International Mile</string>
+    <string name="UNIT_FATHOM">Fathom</string>
+    <string name="UNIT_CABLE">Cable</string>
+    <string name="UNIT_NAUTICAL_MILE">Nautical Mile</string>
+    <string name="UNIT_ASTRONOMICAL_UNIT">Astronomical Unit</string>
+    <string name="UNIT_LIGHT_YEAR">Light Year</string>
+    <string name="UNIT_PARSEC">Parsec</string>
+    <string name="UNIT_EARTH_RADIUS">Earth Radius</string>
+    <string name="UNIT_LUNAR_DISTANCE">Lunar Distance</string>
+    <string name="UNIT_HUBBLE_LENGTH">Hubble Length</string>
+
+    <string name="UNIT_SQUARE_MILLIMETRE">Square Millimetre</string>
+    <string name="UNIT_SQUARE_CENTIMETRE">Square Centimetre</string>
+    <string name="UNIT_SQUARE_METRE">Square Metre</string>
+    <string name="UNIT_ARE">Are</string>
+    <string name="UNIT_HECTARE">Hectare</string>
+    <string name="UNIT_SQUARE_KILOMETRE">Square Kilometre</string>
+    <string name="UNIT_SQUARE_INCH">Square Inch</string>
+    <string name="UNIT_SQUARE_FOOT">Square Foot</string>
+    <string name="UNIT_SQUARE_YARD">Square Yard</string>
+    <string name="UNIT_ACRE">Acre</string>
+    <string name="UNIT_SQUARE_MILE">Square Mile</string>
+    <string name="UNIT_ROOD">Rood</string>
+    <string name="UNIT_SQUARE_DECIMETRE">Square Decimetre</string>
+
+    <string name="UNIT_CUBIC_MILLIMETRE">Cubic Millimetre</string>
+    <string name="UNIT_CUBIC_CENTIMETRE">Cubic Centimetre</string>
+    <string name="UNIT_CUBIC_DECIMETRE">Cubic Decimetre</string>
+    <string name="UNIT_CUBIC_METRE">Cubic Metre</string>
+    <string name="UNIT_CUBIC_DECAMETRE">Cubic Decametre</string>
+    <string name="UNIT_CUBIC_HECTOMETRE">Cubic Hectometre</string>
+    <string name="UNIT_CUBIC_KILOMETRE">Cubic Kilometre</string>
+    <string name="UNIT_MILLILITRE">Millilitre</string>
+    <string name="UNIT_CENTILITRE">Centilitre</string>
+    <string name="UNIT_DECILITRE">Decilitre</string>
+    <string name="UNIT_LITRE">Litre</string>
+    <string name="UNIT_DECALITRE">Decalitre</string>
+    <string name="UNIT_HECTOLITRE">Hectolitre</string>
+    <string name="UNIT_KILOLITRE">Kilolitre</string>
+    <string name="UNIT_CUBIC_INCH">Cubic Inch</string>
+    <string name="UNIT_CUBIC_FOOT">Cubic Foot</string>
+    <string name="UNIT_CUBIC_YARD">Cubic Yard</string>
+    <string name="UNIT_GALLON_UK">Imperial Gallon (UK)</string>
+    <string name="UNIT_GALLON_US">US Gallon Liquid</string>
+    <string name="UNIT_GALLON_US_DRY">US Dry Gallon</string>
+
+    <string name="UNIT_MICROGRAM">Microgram</string>
+    <string name="UNIT_MILLIGRAM">Milligram</string>
+    <string name="UNIT_GRAM">Gram</string>
+    <string name="UNIT_KILOGRAM">Kilogram</string>
+    <string name="UNIT_METRIC_TON">Metric Ton</string>
+    <string name="UNIT_GRAIN">Grain</string>
+    <string name="UNIT_DRAM">Dram</string>
+    <string name="UNIT_OUNCE">Ounce</string>
+    <string name="UNIT_POUND">Pound</string>
+    <string name="UNIT_STONE">Stone</string>
+    <string name="UNIT_QUARTER">Quarter</string>
+    <string name="UNIT_LONG_HUNDREDWEIGHT_UK">Long Hundredweight (UK)</string>
+    <string name="UNIT_SHORT_HUNDREDWEIGHT_US">Short Hundredweight (US)</string>
+    <string name="UNIT_LONG_TON_UK">Long Ton (UK)</string>
+    <string name="UNIT_SHORT_TON_US">Short Ton (US)</string>
+    <string name="UNIT_CARAT">Carat</string>
+    <string name="UNIT_TROY_OUNCE">Troy Ounce</string>
+    <string name="UNIT_TROY_POUND">Troy Pound</string>
+    <string name="UNIT_PENNYWEIGHT">Pennyweight</string>
+    <string name="UNIT_TROY_GRAIN">Troy Grain</string>
+    <string name="UNIT_SLUG">Slug</string>
+    <string name="UNIT_HYL">Hyl / Metric Slug</string>
+
+    <string name="UNIT_GRAM_PER_CUBIC_CENTIMETRE">Gram per Cubic Centimetre</string>
+    <string name="UNIT_KILOGRAM_PER_CUBIC_DECIMETRE">Kilogram per Cubic Centimetre</string>
+    <string name="UNIT_KILOGRAM_PER_CUBIC_METRE">Kilogram per Cubic Metre</string>
+    <string name="UNIT_METRIC_TON_PER_CUBIC_METRE">Metric Ton per Cubic Metre</string>
+    <string name="UNIT_KILOGRAM_PER_LITRE">Kilogram per Litre</string>
+    <string name="UNIT_GRAM_PER_MILLILITRE">Gram per Millilitre</string>
+    <string name="UNIT_POUND_PER_CUBIC_INCH">Pound per Cubic Inch</string>
+    <string name="UNIT_POUND_PER_CUBIC_FOOT">Pound per Cubic Foot</string>
+
+    <string name="UNIT_METRES_PER_SECOND">Metres per Second</string>
+    <string name="UNIT_KILOMETRES_PER_SECOND">Kilometres per Second</string>
+    <string name="UNIT_KILOMETRES_PER_HOUR">Kilometres per Hour</string>
+    <string name="UNIT_METRES_PER_MINUTE">Metres per Minute</string>
+    <string name="UNIT_FEET_PER_SECOND">Feet per Second</string>
+    <string name="UNIT_MILES_PER_SECOND">Miles per Second</string>
+    <string name="UNIT_MILES_PER_HOUR">Miles per Hour</string>
+    <string name="UNIT_FEET_PER_MINUTE">Feet per Minute</string>
+    <string name="UNIT_KNOTS">Knots</string>
+    <string name="UNIT_SPEED_OF_LIGHT">Speed of Light</string>
+    <string name="UNIT_MACH_0">Mach (0° C)</string>
+
+    <string name="UNIT_NANOSECOND">Nanosecond</string>
+    <string name="UNIT_MICROSECOND">Microsecond</string>
+    <string name="UNIT_MILLISECOND">Millisecond</string>
+    <string name="UNIT_SECOND">Second</string>
+    <string name="UNIT_MINUTE">Minute</string>
+    <string name="UNIT_HOUR">Hour</string>
+    <string name="UNIT_DAY">Day</string>
+    <string name="UNIT_WEEK">Week</string>
+    <string name="UNIT_YEAR">Year</string>
+
+
+    <string name="CONSTANT_PERCENT">Percent</string>
+
+    <string name="CONSTANT_YOCTO">Yocto (Septillionth)</string>
+    <string name="CONSTANT_ZEPTO">Zepto (Sextillionth)</string>
+    <string name="CONSTANT_ATTO">Atto (Quintillionth)</string>
+    <string name="CONSTANT_FEMTO">Femto (Quadrillionth)</string>
+    <string name="CONSTANT_PICO">Pico (Trillionth)</string>
+    <string name="CONSTANT_NANO">Nano (Billionth)</string>
+    <string name="CONSTANT_MICRO">Micro (Millionth)</string>
+    <string name="CONSTANT_MILLI">Milli (Thousandth)</string>
+    <string name="CONSTANT_CENTI">Centi (Hundredth)</string>
+    <string name="CONSTANT_DECI">Deci (Tenth)</string>
+    <string name="CONSTANT_DEKA">Deka (Ten)</string>
+    <string name="CONSTANT_HECTO">Hecto (Hundred)</string>
+    <string name="CONSTANT_KILO">Kilo (Thousand)</string>
+    <string name="CONSTANT_MEGA">Mega (Million)</string>
+    <string name="CONSTANT_GIGA">Giga (Billion)</string>
+    <string name="CONSTANT_TERA">Tera (Trillion)</string>
+    <string name="CONSTANT_PETA">Peta (Quadrillion)</string>
+    <string name="CONSTANT_EXA">Exa (Quintillion)</string>
+    <string name="CONSTANT_ZETTA">Zetta (Sextillion)</string>
+    <string name="CONSTANT_YOTTA">Yotta (Septillion)</string>
+
+    <string name="CONSTANTS_UNIVERSAL">Universal</string>
+    <string name="CONSTANTS_ELECTROMAGNETIC">Electromagnetic</string>
+    <string name="CONSTANTS_ATOMIC_AND_NUCLEAR">Atomic and Nuclear</string>
+    <string name="CONSTANTS_PHYSICOCHEMICAL">Physicochemical</string>
+    <string name="CONSTANTS_MATHEMATICAL">Mathematical</string>
+
+    <string name="CONSTANT_PI">Pi (Archimedes\' Constant)</string>
+    <string name="CONSTANT_PI_HALF">Pi-Half</string>
+    <string name="CONSTANT_EULER_NUMBER">Euler Number</string>
+    <string name="CONSTANT_EULER_MASCHERONI_CONSTANT">Euler-Mascheroni Constant</string>
+    <string name="CONSTANT_GOLDEN_RATIO">Golden Ratio</string>
+    <string name="CONSTANT_INVERSE_GOLDEN_RATIO">Inverse Golden Ratio</string>
+    <string name="CONSTANT_SILVER_RATIO">Silver Ratio</string>
+    <string name="CONSTANT_PLASTIC_CONSTANT">Plastic Constant</string>
+
+    <string name="CONSTANT_SPEED_OF_LIGHT">Speed of Light (Vacuum)</string>
+    <string name="CONSTANT_MAGNETIC">Permeability of Vacuum</string>
+    <string name="CONSTANT_ELECTRIC">Permittivity of Vacuum</string>
+    <string name="CONSTANT_CHARACTERISTIC_IMPEDANCE">Characteristic Impedance (Vacuum)</string>
+    <string name="CONSTANT_NEWTONIAN_CONSTANT_OF_GRAVITATION">Newtonian Constant of Gravitation</string>
+    <string name="CONSTANT_PLANCK_CONSTANT">Planck Constant</string>
+    <string name="CONSTANT_PLANCK_CONSTANT_REDUCED">Reduced Planck Constant</string>
+    <string name="CONSTANT_PLANCK_MASS">Planck Mass</string>
+    <string name="CONSTANT_PLANCK_TEMPERATURE">Planck Temperature</string>
+    <string name="CONSTANT_PLANCK_LENGTH">Planck Length</string>
+    <string name="CONSTANT_PLANCK_TIME">Planck Time</string>
+    <string name="CONSTANT_ELEMENTARY_CHARGE">Elementary Charge</string>
+    <string name="CONSTANT_MAGNETIC_FLUX_QUANTUM">Magnetic Flux Quantum</string>
+    <string name="CONSTANT_CONDUCTANCE_QUANTUM">Conductance Quantum</string>
+    <string name="CONSTANT_JOSEPHON_CONSTANT">Josephson Constant</string>
+    <string name="CONSTANT_VON_KLITZING_CONSTANT">Von Klitzing Constant</string>
+    <string name="CONSTANT_BOHR_MAGNETON">Bohr Magneton</string>
+    <string name="CONSTANT_NUCLEAR_MAGNETON">Nuclear Magneton</string>
+
+    <string name="CONSTANT_FINE_STRUCTURE_CONSTANT">Fine-structure Constant</string>
+    <string name="CONSTANT_RYDBERG_CONSTANT">Rydberg Constant</string>
+    <string name="CONSTANT_BOHR_RADIUS">Bohr Radius</string>
+    <string name="CONSTANT_HARTREE_ENERGY">Hartree Energy</string>
+    <string name="CONSTANT_QUANTUM_OF_CIRCULATION">Quantum of Circulation</string>
+
+    <string name="CONSTANT_FERMI_COUPLING_CONSTANT">Fermi Coupling Constant</string>
+    <string name="CONSTANT_WEAK_MIXING_ANGLE">Weak Mixing Angle</string>
+    <string name="CONSTANT_ELECTRON_MASS">Electron Mass</string>
+    <string name="CONSTANT_ELECTRON_REST_ENERGY">Electron Rest Energy</string>
+    <string name="CONSTANT_ELECTRON_MOLAR_MASS">Electron Molar Mass</string>
+    <string name="CONSTANT_COMPTON_WAVELENGTH">Compton Wavelength</string>
+    <string name="CONSTANT_CLASSICAL_ELECTRON_RADIUS">Classical Electron Radius</string>
+    <string name="CONSTANT_THOMSON_CROSS_SECTION">Thomson Cross Section</string>
+    <string name="CONSTANT_ELECTRON_MAGNETIC_MOMENT">Electron Magnetic Moment</string>
+    <string name="CONSTANT_ELECTRON_MAGNETIC_MOMENT_ANOMALY">Electron Magnetic Moment Anomaly</string>
+    <string name="CONSTANT_ELECTRON_G_FACTOR">Electron g-Factor</string>
+    <string name="CONSTANT_MUON_MASS">Muon Mass</string>
+    <string name="CONSTANT_MUON_REST_ENERGY">Muon Rest Energy</string>
+    <string name="CONSTANT_MUON_MOLAR_MASS">Muon Molar Mass</string>
+    <string name="CONSTANT_MUON_COMPTON_WAVELENGTH">Muon Compton Wavelength</string>
+
+    <string name="CONSTANT_AVOGADRO_CONSTANT">Avogadro Constant</string>
+    <string name="CONSTANT_ATOMIC_MASS_CONSTANT">Atomic Mass Constant</string>
+    <string name="CONSTANT_ATOMIC_MASS_REST_ENERGY">Atomic Mass Rest Energy</string>
+    <string name="CONSTANT_FARADAY_CONSTANT">Faraday Constant</string>
+    <string name="CONSTANT_MOLAR_PLANCK_CONSTANT">Molar Planck Constant</string>
+    <string name="CONSTANT_MOLAR_GAS_CONSTANT">Molar Gas Constant</string>
+    <string name="CONSTANT_BOLTZMANN_CONSTANT">Boltzmann Constant</string>
+
+    <string name="SETTINGS_HEADLINE_GENERAL">General Settings</string>
+    <string name="SETTINGS_INTERIM_RESULTS">Show interim results</string>
+    <string name="SETTINGS_FULLSCREEN">Fullscreen</string>
+    <string name="SETTINGS_LOCK_PORTRAIT">Lock portrait mode</string>
+    <string name="SETTINGS_VIBRATION">Vibration</string>
+    <string name="SETTINGS_HEADLINE_PRECISION">Precision Settings</string>
+    <string name="SETTINGS_HEADLINE_ALTERNATIVE_NOTATION">Alternative Notation</string>
+    <string name="SETTINGS_HEADLINE_UI">User Interface</string>
+    <string name="SETTINGS_HEADLINE_ABOUT">About</string>
+
+</resources>

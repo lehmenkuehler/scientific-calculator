@@ -5,28 +5,38 @@ import java.math.BigDecimal;
 import org.lehmenkuehler.calculator.Mechanics.Fractions;
 import org.lehmenkuehler.calculator.Mechanics.Result;
 
-public class Shaper {
-
-    public static String getFinalOutput(Result answer, Preferences.NotationMode notationMode, Preferences.NotationMode alternativeNotationMode) {
+public class Shaper
+{
+    public static String getFinalOutput(Result answer, Preferences.NotationMode notationMode, Preferences.NotationMode alternativeNotationMode)
+    {
         String real = "", imaginary = "", radius = "", angle;
         String output;
-        if (Preferences.MODE_NUMERAL == Preferences.NumeralMode.DEC) {
-            if (Preferences.MODE_COMPLEX == Preferences.ComplexMode.RECT) {
-                if ((answer.getRe().signum() != 0) && (answer.getRe().abs().compareTo(new BigDecimal("1E" + String.valueOf(Preferences.NOTATION_THRESHOLD))) > 0 || answer.getRe().abs().compareTo(new BigDecimal("1E-" + String.valueOf(Preferences.NOTATION_THRESHOLD))) < 0)) {
+        if (Preferences.MODE_NUMERAL == Preferences.NumeralMode.DEC)
+        {
+            if (Preferences.MODE_COMPLEX == Preferences.ComplexMode.RECT)
+            {
+                if ((answer.getRe().signum() != 0) && (answer.getRe().abs().compareTo(
+                        new BigDecimal("1E" + String.valueOf(Preferences.NOTATION_THRESHOLD))) > 0 ||
+                        answer.getRe().abs().compareTo(new BigDecimal("1E-" + String.valueOf(Preferences.NOTATION_THRESHOLD))) < 0))
+                {
                     if (alternativeNotationMode == Preferences.NotationMode.SCI)
                         real = buildNotationSCI(answer.getRe());
                     else if (alternativeNotationMode == Preferences.NotationMode.ENG)
                         real = buildNotationENG(answer.getRe());
                     else real = buildNotationDEC(answer.getRe());
                 }
-                if ((answer.getIm().signum() != 0) && (answer.getIm().abs().compareTo(new BigDecimal("1E" + String.valueOf(Preferences.NOTATION_THRESHOLD))) > 0 || answer.getIm().abs().compareTo(new BigDecimal("1E-" + String.valueOf(Preferences.NOTATION_THRESHOLD))) < 0)) {
+                if ((answer.getIm().signum() != 0) && (answer.getIm().abs().compareTo(
+                        new BigDecimal("1E" + String.valueOf(Preferences.NOTATION_THRESHOLD))) > 0 ||
+                        answer.getIm().abs().compareTo(new BigDecimal("1E-" + String.valueOf(Preferences.NOTATION_THRESHOLD))) < 0))
+                {
                     if (alternativeNotationMode == Preferences.NotationMode.SCI)
                         imaginary = buildNotationSCI(answer.getRe());
                     else if (alternativeNotationMode == Preferences.NotationMode.ENG)
                         imaginary = buildNotationENG(answer.getRe());
                     else imaginary = buildNotationDEC(answer.getRe());
                 }
-                switch (notationMode) {
+                switch (notationMode)
+                {
                     case DEC:
                         if (real.equals("")) real = buildNotationDEC(answer.getRe());
                         if (imaginary.equals("")) imaginary = buildNotationDEC(answer.getIm());
@@ -41,11 +51,14 @@ public class Shaper {
                         break;
                 }
                 output = buildRect(answer, real, imaginary);
-            } else {
+            } else
+            {
                 if (answer.getRe().compareTo(new BigDecimal("1E12")) > 0 || answer.getIm().compareTo(new BigDecimal("1E12")) > 0)
                     radius = buildNotationENG(answer.getRadius());
-                else {
-                    switch (notationMode) {
+                else
+                {
+                    switch (notationMode)
+                    {
                         case DEC:
                             radius = buildNotationDEC(answer.getRadius());
                             break;
@@ -66,67 +79,86 @@ public class Shaper {
         return output;
     }
 
-    static private String buildNotationDEC(BigDecimal x) {
+    static private String buildNotationDEC(BigDecimal x)
+    {
         return Fractions.tryConvert(x, Preferences.PRECISION);
     }
 
-    static private String buildNotationSCI(BigDecimal x) {
+    static private String buildNotationSCI(BigDecimal x)
+    {
         int power = 0;
         x = x.abs();
-        if (x.compareTo(BigDecimal.ZERO) == 0) {
+        if (x.compareTo(BigDecimal.ZERO) == 0)
+        {
             return "0";
-        } else if (x.compareTo(BigDecimal.ONE) < 0) {
-            while (x.compareTo(BigDecimal.ONE) < 0) {
+        } else if (x.compareTo(BigDecimal.ONE) < 0)
+        {
+            while (x.compareTo(BigDecimal.ONE) < 0)
+            {
                 x = x.movePointRight(1);
                 power--;
             }
             return Fractions.tryConvert(x, Preferences.SCIENTIFIC_PRECISION) + " × 10<sup><small>" + power + "</sup></small>";
-        } else if (x.compareTo(BigDecimal.TEN) > 0) {
-            do {
+        } else if (x.compareTo(BigDecimal.TEN) > 0)
+        {
+            do
+            {
                 x = x.movePointLeft(1);
                 power++;
             } while (x.compareTo(BigDecimal.TEN) > 0);
             return Fractions.tryConvert(x, Preferences.SCIENTIFIC_PRECISION) + " × 10<sup><small>" + power + "</sup></small>";
-        } else {
+        } else
+        {
             power = 0;
             return Fractions.tryConvert(x, Preferences.SCIENTIFIC_PRECISION) + " × 10<sup><small>" + power + "</sup></small>";
         }
     }
 
-    static private String buildNotationENG(BigDecimal x) {
+    static private String buildNotationENG(BigDecimal x)
+    {
         int power = 0;
         x = x.abs();
-        if (x.compareTo(BigDecimal.ZERO) == 0) {
+        if (x.compareTo(BigDecimal.ZERO) == 0)
+        {
             return "0";
-        } else if (x.compareTo(BigDecimal.ONE) < 0) {
-            while (x.compareTo(BigDecimal.ONE) < 0) {
+        } else if (x.compareTo(BigDecimal.ONE) < 0)
+        {
+            while (x.compareTo(BigDecimal.ONE) < 0)
+            {
                 x = x.movePointRight(1);
                 power--;
             }
-            while ((power * -1) % 3 != 0) {
+            while ((power * -1) % 3 != 0)
+            {
                 x = x.movePointRight(1);
                 power--;
             }
             return Fractions.tryConvert(x, Preferences.ENGINEERING_PRECISION) + " × 10<sup><small>" + power + "</sup></small>";
-        } else if (x.compareTo(new BigDecimal("1000")) >= 0) {
-            while (x.compareTo(new BigDecimal("1000")) >= 0) {
+        } else if (x.compareTo(new BigDecimal("1000")) >= 0)
+        {
+            while (x.compareTo(new BigDecimal("1000")) >= 0)
+            {
                 x = x.movePointLeft(1);
                 power++;
             }
-            while (power % 3 != 0) {
+            while (power % 3 != 0)
+            {
                 x = x.movePointLeft(1);
                 power++;
             }
             return Fractions.tryConvert(x, Preferences.ENGINEERING_PRECISION) + " × 10<sup><small>" + power + "</sup></small>";
-        } else {
+        } else
+        {
             power = 0;
             return Fractions.tryConvert(x, Preferences.ENGINEERING_PRECISION) + " × 10<sup><small>" + power + "</sup></small>";
         }
     }
 
-    static private String buildRect(Result answer, String real, String imaginary) {
+    static private String buildRect(Result answer, String real, String imaginary)
+    {
         String output = "";
-        switch (answerStructure(answer)) {
+        switch (answerStructure(answer))
+        {
             case ZERO:
                 if (answer.getRe().compareTo(BigDecimal.ZERO) < 0) output = "-";
                 output += real;
@@ -152,16 +184,19 @@ public class Shaper {
         return output;
     }
 
-    private static String buildPolar(Result answer, String radius, String angle) {
+    private static String buildPolar(Result answer, String radius, String angle)
+    {
         String output = "";
         if (answerStructure(answer) == Structure.ZERO) output = "0 ∠ 0";
-        else {
+        else
+        {
             output += radius + " ∠ " + angle;
         }
         return output;
     }
 
-    private static Structure answerStructure(Result answer) {
+    private static Structure answerStructure(Result answer)
+    {
         if (answer.getRe().compareTo(BigDecimal.ZERO) == 0 && answer.getIm().compareTo(BigDecimal.ZERO) == 0)
             return Structure.ZERO;
         else if (answer.getRe().compareTo(BigDecimal.ZERO) != 0 && answer.getIm().compareTo(BigDecimal.ZERO) == 0)
@@ -171,14 +206,17 @@ public class Shaper {
         else return Structure.REAL_AND_COMPLEX;
     }
 
-    private static String buildSpecialNumeralSystem(Result answer) {
+    private static String buildSpecialNumeralSystem(Result answer)
+    {
         String output = "";
-        switch (answerStructure(answer)) {
+        switch (answerStructure(answer))
+        {
             case ZERO:
                 output = "0";
                 break;
             case ONLY_REAL:
-                switch (Preferences.MODE_NUMERAL) {
+                switch (Preferences.MODE_NUMERAL)
+                {
                     case BIN:
                         output += Numeral.convertMode(answer.getRe(), Preferences.NumeralMode.BIN);
                         break;
@@ -193,7 +231,8 @@ public class Shaper {
                 }
                 break;
             case ONLY_COMPLEX:
-                switch (Preferences.MODE_NUMERAL) {
+                switch (Preferences.MODE_NUMERAL)
+                {
                     case BIN:
                         output += Numeral.convertMode(answer.getIm(), Preferences.NumeralMode.BIN);
                         break;
@@ -208,7 +247,8 @@ public class Shaper {
                 }
                 break;
             case REAL_AND_COMPLEX:
-                switch (Preferences.MODE_NUMERAL) {
+                switch (Preferences.MODE_NUMERAL)
+                {
                     case BIN:
                         output += Numeral.convertMode(answer.getRe(), Preferences.NumeralMode.BIN);
                         break;
@@ -223,7 +263,8 @@ public class Shaper {
                 }
                 if (answer.getIm().compareTo(BigDecimal.ZERO) < 0) output += " - ";
                 else output += " + ";
-                switch (Preferences.MODE_NUMERAL) {
+                switch (Preferences.MODE_NUMERAL)
+                {
                     case BIN:
                         output += Numeral.convertMode(answer.getIm(), Preferences.NumeralMode.BIN);
                         break;
@@ -241,5 +282,8 @@ public class Shaper {
         return output;
     }
 
-    enum Structure {ZERO, ONLY_REAL, ONLY_COMPLEX, REAL_AND_COMPLEX}
+    enum Structure
+    {
+        ZERO, ONLY_REAL, ONLY_COMPLEX, REAL_AND_COMPLEX
+    }
 }

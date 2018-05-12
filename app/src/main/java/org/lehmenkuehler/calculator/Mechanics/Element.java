@@ -3,53 +3,70 @@ package org.lehmenkuehler.calculator.Mechanics;
 
 import org.lehmenkuehler.calculator.Enums.Component;
 
-public class Element {
-
-    private Component component = Component.VOID;
-    private int id = 0;
+public class Element
+{
+    private Component component;
+    private int id;
     private int answerId = 0;
     private OpticFeatureScript opticFeatureScript = OpticFeatureScript.NORMAL;
     private OpticFeatureSize opticFeatureSize = OpticFeatureSize.NORMAL;
 
-    public enum OpticFeatureScript {NORMAL, SUPERSCRIPT_START, SUPERSCRIPT_STOP, SUBSCRIPT_START, SUBSCRIPT_STOP}
-    public enum OpticFeatureSize {NORMAL, SMALL_START, SMALL_STOP}
+    public enum OpticFeatureScript
+    {
+        NORMAL, SUPERSCRIPT_START, SUPERSCRIPT_STOP, SUBSCRIPT_START, SUBSCRIPT_STOP
+    }
 
-    public Element(Component component, int id) {
+    public enum OpticFeatureSize
+    {
+        NORMAL, SMALL_START, SMALL_STOP
+    }
+
+    public Element(Component component, int id)
+    {
         this.component = component;
         this.id = id;
     }
-    public Element(Component component, int id, OpticFeatureScript opticFeatureScript, OpticFeatureSize opticFeatureSize) {
+
+    public Element(Component component, int id, OpticFeatureScript opticFeatureScript, OpticFeatureSize opticFeatureSize)
+    {
         this.component = component;
         this.id = id;
         this.opticFeatureScript = opticFeatureScript;
         this.opticFeatureSize = opticFeatureSize;
     }
 
-    public Component getComponent() {
+    public Component getComponent()
+    {
         return component;
     }
 
-    public int getId() {
+    public int getId()
+    {
         return id;
     }
 
-    public OpticFeatureScript getOpticFeatureScript() {
+    public OpticFeatureScript getOpticFeatureScript()
+    {
         return opticFeatureScript;
     }
 
-    public OpticFeatureSize getOpticFeatureSize() {
+    public OpticFeatureSize getOpticFeatureSize()
+    {
         return opticFeatureSize;
     }
 
-    public void setId(int id) {
+    public void setId(int id)
+    {
         this.id = id;
     }
 
-    public void setAnswerId(int answerId) {
+    public void setAnswerId(int answerId)
+    {
         this.answerId = answerId;
     }
 
-    public int getAnswerId() {
+    public int getAnswerId()
+    {
         return answerId;
     }
 }

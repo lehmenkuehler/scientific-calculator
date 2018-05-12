@@ -10,8 +10,8 @@ import org.lehmenkuehler.calculator.Preferences;
 import org.lehmenkuehler.calculator.R;
 import org.lehmenkuehler.calculator.Utility;
 
-public enum Component {
-
+public enum Component
+{
     VOID,
 
     ANSWER(Type.CONSTANT, "ans", 3 + 2),
@@ -882,20 +882,27 @@ public enum Component {
     private List<Component> phantom = new ArrayList<>();
     private int id = 0;
     private int length = 0;
-    Component() {
+
+    Component()
+    {
     }
-    Component(Type type, String symbol) {
+
+    Component(Type type, String symbol)
+    {
         this.type = type;
         this.symbol = symbol;
     }
-    Component(Type type, String symbol, int length) {
+
+    Component(Type type, String symbol, int length)
+    {
         this.type = type;
         this.symbol = symbol;
         this.length = length;
     }
 
 
-    Component(Type type, String symbol, String description, String name, FunctionTag functionTag, List<Component> phantom) {
+    Component(Type type, String symbol, String description, String name, FunctionTag functionTag, List<Component> phantom)
+    {
         this.type = type;
         this.symbol = symbol;
         this.name = name;
@@ -904,7 +911,8 @@ public enum Component {
         this.phantom = phantom;
     }
 
-    Component(Type type, String symbol, String description, String name, ConstantTag tag, BigDecimal value) {
+    Component(Type type, String symbol, String description, String name, ConstantTag tag, BigDecimal value)
+    {
         this.type = type;
         this.symbol = symbol;
         this.name = name;
@@ -913,7 +921,8 @@ public enum Component {
         this.value = value;
     }
 
-    Component(Type type, String symbol, int length, String description, String name, ConstantTag tag, BigDecimal value) {
+    Component(Type type, String symbol, int length, String description, String name, ConstantTag tag, BigDecimal value)
+    {
         this.type = type;
         this.symbol = symbol;
         this.length = length;
@@ -923,7 +932,8 @@ public enum Component {
         this.value = value;
     }
 
-    Component(Type type, String symbol, int length, String description, String name, FunctionTag functionTag, List<Component> phantom) {
+    Component(Type type, String symbol, int length, String description, String name, FunctionTag functionTag, List<Component> phantom)
+    {
         this.type = type;
         this.symbol = symbol;
         this.length = length;
@@ -934,67 +944,84 @@ public enum Component {
     }
 
     //DELETE WHEN DONE
-    Component(Type type, String symbol, List<Component> phantom) {
+    Component(Type type, String symbol, List<Component> phantom)
+    {
         this.type = type;
         this.symbol = symbol;
         this.phantom = phantom;
     }
 
-    Component(Type type, String symbol, int length, List<Component> phantom) {
+    Component(Type type, String symbol, int length, List<Component> phantom)
+    {
         this.type = type;
         this.symbol = symbol;
         this.length = length;
         this.phantom = phantom;
     }
 
-    public Type getType() {
+    public Type getType()
+    {
         return type;
     }
 
-    public String getSymbol() {
+    public String getSymbol()
+    {
         return symbol;
     }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
-    public String getDescription() {
+    public String getDescription()
+    {
         return description;
     }
 
-    public ConstantTag getConstantTag() {
+    public ConstantTag getConstantTag()
+    {
         return tag;
     }
 
-    public BigDecimal getValue() {
+    public BigDecimal getValue()
+    {
         return value;
     }
 
-    public List<Component> getPhantom() {
+    public List<Component> getPhantom()
+    {
         return phantom;
     }
 
-    public int getId() {
+    public int getId()
+    {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(int id)
+    {
         this.id = id;
     }
 
-    public FunctionTag getFunctionTag() {
+    public FunctionTag getFunctionTag()
+    {
         return functionTag;
     }
 
-    public int getLength() {
+    public int getLength()
+    {
         if (length == 0) return symbol.length();
         else return length;
     }
 
-    public enum Type {VOID, FIGURE, OPERATOR, CONSTANT, FUNCTION, CONNECTIVE_FUNCTION, ADVANCED_FUNCTION, BRACKET_OPEN, BRACKET_CLOSE, VARIABLE, DOT, COMMA, PHANTOM, SIGN}
+    public enum Type
+    {
+        VOID, FIGURE, OPERATOR, CONSTANT, FUNCTION, CONNECTIVE_FUNCTION, ADVANCED_FUNCTION, BRACKET_OPEN, BRACKET_CLOSE, VARIABLE, DOT, COMMA, PHANTOM, SIGN
+    }
 
-    public enum ConstantTag {
+    public enum ConstantTag
+    {
         VOID("VOID"),
         PREFIX("PREFIX"),
         UNIVERSAL(Utility.getContext().getString(R.string.CONSTANTS_UNIVERSAL)),
@@ -1005,27 +1032,32 @@ public enum Component {
 
         String name = "";
 
-        ConstantTag(String name) {
+        ConstantTag(String name)
+        {
             this.name = name;
         }
 
-        public String getName() {
+        public String getName()
+        {
             return name;
         }
     }
 
-    public enum FunctionTag {
+    public enum FunctionTag
+    {
         VOID("VOID"),
         TRIGONOMETRIC_AND_HYPERBOLIC(Utility.getContext().getString(R.string.FUNCTIONS_TRIGONOMETRIC_AND_HYPERBOLIC)),
         EXPONENTS_AND_LOGARITHMS(Utility.getContext().getString(R.string.FUNCTIONS_EXPONENTS_AND_LOGARITHMS));
 
         String name = "";
 
-        FunctionTag(String name) {
+        FunctionTag(String name)
+        {
             this.name = name;
         }
 
-        public String getName() {
+        public String getName()
+        {
             return name;
         }
     }

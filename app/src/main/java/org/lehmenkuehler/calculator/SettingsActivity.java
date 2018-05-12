@@ -18,14 +18,15 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class SettingsActivity extends Activity implements View.OnClickListener {
-
+public class SettingsActivity extends Activity implements View.OnClickListener
+{
     boolean visualUpdate;
 
     Button ButtonAlternativeModeOff, ButtonAlternativeModeSCI, ButtonAlternativeModeENG;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
@@ -37,9 +38,11 @@ public class SettingsActivity extends Activity implements View.OnClickListener {
         // INTERIM RESULTS
         Switch SwitchInterimResults = (Switch) findViewById(R.id.SwitchInterimResults);
         SwitchInterimResults.setChecked(Preferences.INTERIM_RESULTS);
-        SwitchInterimResults.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        SwitchInterimResults.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b)
+            {
                 SharedPreferences settings = Utility.getContext().getSharedPreferences(Utility.getContext().getResources().getString(R.string.SHARED_PREFERENCES_SETTINGS), Context.MODE_PRIVATE);
                 SharedPreferences.Editor settingEditor = settings.edit();
                 Preferences.INTERIM_RESULTS = b;
@@ -51,9 +54,11 @@ public class SettingsActivity extends Activity implements View.OnClickListener {
         // FULLSCREEN
         Switch SwitchFullscreen = (Switch) findViewById(R.id.SwitchFullscreen);
         SwitchFullscreen.setChecked(Preferences.FULLSCREEN);
-        SwitchFullscreen.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        SwitchFullscreen.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b)
+            {
                 SharedPreferences settings = Utility.getContext().getSharedPreferences(Utility.getContext().getResources().getString(R.string.SHARED_PREFERENCES_SETTINGS), Context.MODE_PRIVATE);
                 SharedPreferences.Editor settingEditor = settings.edit();
                 Preferences.FULLSCREEN = b;
@@ -66,9 +71,11 @@ public class SettingsActivity extends Activity implements View.OnClickListener {
         // LOCK PORTRAIT MODE
         Switch SwitchLockPortrait = (Switch) findViewById(R.id.SwitchLockPortrait);
         SwitchLockPortrait.setChecked(Preferences.LOCK_PORTRAIT);
-        SwitchLockPortrait.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        SwitchLockPortrait.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b)
+            {
                 SharedPreferences settings = Utility.getContext().getSharedPreferences(Utility.getContext().getResources().getString(R.string.SHARED_PREFERENCES_SETTINGS), Context.MODE_PRIVATE);
                 SharedPreferences.Editor settingEditor = settings.edit();
                 Preferences.LOCK_PORTRAIT = b;
@@ -81,9 +88,11 @@ public class SettingsActivity extends Activity implements View.OnClickListener {
         // VIBRATION
         Switch SwitchVibration = (Switch) findViewById(R.id.SwitchVibration);
         SwitchVibration.setChecked(Preferences.VIBRATION);
-        SwitchVibration.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        SwitchVibration.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b)
+            {
                 SharedPreferences settings = Utility.getContext().getSharedPreferences(Utility.getContext().getResources().getString(R.string.SHARED_PREFERENCES_SETTINGS), Context.MODE_PRIVATE);
                 SharedPreferences.Editor settingEditor = settings.edit();
                 Preferences.VIBRATION = b;
@@ -95,9 +104,11 @@ public class SettingsActivity extends Activity implements View.OnClickListener {
         // DECIMAL PLACES
         Switch SwitchFixedDecimalPlaces = (Switch) findViewById(R.id.SwitchFixedDecimalPlaces);
         SwitchFixedDecimalPlaces.setChecked(Preferences.FIX_PRECISION);
-        SwitchFixedDecimalPlaces.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        SwitchFixedDecimalPlaces.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b)
+            {
                 SharedPreferences settings = Utility.getContext().getSharedPreferences(Utility.getContext().getResources().getString(R.string.SHARED_PREFERENCES_SETTINGS), Context.MODE_PRIVATE);
                 SharedPreferences.Editor settingEditor = settings.edit();
                 Preferences.FIX_PRECISION = b;
@@ -113,9 +124,11 @@ public class SettingsActivity extends Activity implements View.OnClickListener {
         SeekBarPrecisionDEC.setMax(30);
         SeekBarPrecisionDEC.setProgress(Preferences.PRECISION);
         TextViewPrecisionDEC.setText(String.valueOf(Preferences.PRECISION));
-        SeekBarPrecisionDEC.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        SeekBarPrecisionDEC.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
+        {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b)
+            {
                 SharedPreferences settings = Utility.getContext().getSharedPreferences(Utility.getContext().getResources().getString(R.string.SHARED_PREFERENCES_SETTINGS), Context.MODE_PRIVATE);
                 SharedPreferences.Editor settingEditor = settings.edit();
                 Preferences.PRECISION = i;
@@ -125,12 +138,14 @@ public class SettingsActivity extends Activity implements View.OnClickListener {
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
+            public void onStartTrackingTouch(SeekBar seekBar)
+            {
 
             }
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
+            public void onStopTrackingTouch(SeekBar seekBar)
+            {
 
             }
         });
@@ -142,9 +157,11 @@ public class SettingsActivity extends Activity implements View.OnClickListener {
         SeekBarPrecisionSCI.setMax(10);
         SeekBarPrecisionSCI.setProgress(Preferences.SCIENTIFIC_PRECISION);
         TextViewPrecisionSCI.setText(String.valueOf(Preferences.SCIENTIFIC_PRECISION));
-        SeekBarPrecisionSCI.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        SeekBarPrecisionSCI.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
+        {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b)
+            {
                 SharedPreferences settings = Utility.getContext().getSharedPreferences(Utility.getContext().getResources().getString(R.string.SHARED_PREFERENCES_SETTINGS), Context.MODE_PRIVATE);
                 SharedPreferences.Editor settingEditor = settings.edit();
                 Preferences.SCIENTIFIC_PRECISION = i;
@@ -154,12 +171,14 @@ public class SettingsActivity extends Activity implements View.OnClickListener {
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
+            public void onStartTrackingTouch(SeekBar seekBar)
+            {
 
             }
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
+            public void onStopTrackingTouch(SeekBar seekBar)
+            {
 
             }
         });
@@ -171,9 +190,11 @@ public class SettingsActivity extends Activity implements View.OnClickListener {
         SeekBarPrecisionENG.setMax(10);
         SeekBarPrecisionENG.setProgress(Preferences.ENGINEERING_PRECISION);
         TextViewPrecisionENG.setText(String.valueOf(Preferences.ENGINEERING_PRECISION));
-        SeekBarPrecisionENG.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        SeekBarPrecisionENG.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
+        {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b)
+            {
                 SharedPreferences settings = Utility.getContext().getSharedPreferences(Utility.getContext().getResources().getString(R.string.SHARED_PREFERENCES_SETTINGS), Context.MODE_PRIVATE);
                 SharedPreferences.Editor settingEditor = settings.edit();
                 Preferences.ENGINEERING_PRECISION = i;
@@ -183,12 +204,14 @@ public class SettingsActivity extends Activity implements View.OnClickListener {
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
+            public void onStartTrackingTouch(SeekBar seekBar)
+            {
 
             }
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
+            public void onStopTrackingTouch(SeekBar seekBar)
+            {
 
             }
         });
@@ -199,9 +222,11 @@ public class SettingsActivity extends Activity implements View.OnClickListener {
         ButtonAlternativeModeENG = (Button) findViewById(R.id.ButtonAlternativeModeENG);
         refreshAlternativeNotation();
 
-        ButtonAlternativeModeOff.setOnClickListener(new View.OnClickListener() {
+        ButtonAlternativeModeOff.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 SharedPreferences settings = Utility.getContext().getSharedPreferences(Utility.getContext().getResources().getString(R.string.SHARED_PREFERENCES_SETTINGS), Context.MODE_PRIVATE);
                 SharedPreferences.Editor settingEditor = settings.edit();
                 Preferences.MODE_NOTATION_ALTERNATIVE = Preferences.NotationMode.DEC;
@@ -210,9 +235,11 @@ public class SettingsActivity extends Activity implements View.OnClickListener {
                 refreshAlternativeNotation();
             }
         });
-        ButtonAlternativeModeSCI.setOnClickListener(new View.OnClickListener() {
+        ButtonAlternativeModeSCI.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 SharedPreferences settings = Utility.getContext().getSharedPreferences(Utility.getContext().getResources().getString(R.string.SHARED_PREFERENCES_SETTINGS), Context.MODE_PRIVATE);
                 SharedPreferences.Editor settingEditor = settings.edit();
                 Preferences.MODE_NOTATION_ALTERNATIVE = Preferences.NotationMode.SCI;
@@ -221,9 +248,11 @@ public class SettingsActivity extends Activity implements View.OnClickListener {
                 refreshAlternativeNotation();
             }
         });
-        ButtonAlternativeModeENG.setOnClickListener(new View.OnClickListener() {
+        ButtonAlternativeModeENG.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 SharedPreferences settings = Utility.getContext().getSharedPreferences(Utility.getContext().getResources().getString(R.string.SHARED_PREFERENCES_SETTINGS), Context.MODE_PRIVATE);
                 SharedPreferences.Editor settingEditor = settings.edit();
                 Preferences.MODE_NOTATION_ALTERNATIVE = Preferences.NotationMode.ENG;
@@ -240,9 +269,11 @@ public class SettingsActivity extends Activity implements View.OnClickListener {
         SeekBarThreshold.setMax(30);
         SeekBarThreshold.setProgress(Preferences.NOTATION_THRESHOLD);
         TextViewThreshold.setText(String.valueOf(Preferences.NOTATION_THRESHOLD));
-        SeekBarThreshold.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        SeekBarThreshold.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
+        {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b)
+            {
                 SharedPreferences settings = Utility.getContext().getSharedPreferences(Utility.getContext().getResources().getString(R.string.SHARED_PREFERENCES_SETTINGS), Context.MODE_PRIVATE);
                 SharedPreferences.Editor settingEditor = settings.edit();
                 Preferences.NOTATION_THRESHOLD = i;
@@ -252,12 +283,14 @@ public class SettingsActivity extends Activity implements View.OnClickListener {
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
+            public void onStartTrackingTouch(SeekBar seekBar)
+            {
 
             }
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
+            public void onStopTrackingTouch(SeekBar seekBar)
+            {
 
             }
         });
@@ -270,9 +303,11 @@ public class SettingsActivity extends Activity implements View.OnClickListener {
         SeekBarKeyboardWidth.setProgress(Preferences.KEYBOARD_WIDTH - 900);
         String percentage = new BigDecimal(String.valueOf(Preferences.KEYBOARD_WIDTH * 0.1)).setScale(1, BigDecimal.ROUND_FLOOR).toPlainString() + "%";
         TextViewKeyboardWidth.setText(percentage);
-        SeekBarKeyboardWidth.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        SeekBarKeyboardWidth.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
+        {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b)
+            {
                 SharedPreferences settings = Utility.getContext().getSharedPreferences(Utility.getContext().getResources().getString(R.string.SHARED_PREFERENCES_SETTINGS), Context.MODE_PRIVATE);
                 SharedPreferences.Editor settingEditor = settings.edit();
                 Preferences.KEYBOARD_WIDTH = i + 900;
@@ -284,12 +319,14 @@ public class SettingsActivity extends Activity implements View.OnClickListener {
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
+            public void onStartTrackingTouch(SeekBar seekBar)
+            {
 
             }
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
+            public void onStopTrackingTouch(SeekBar seekBar)
+            {
 
             }
         });
@@ -302,9 +339,11 @@ public class SettingsActivity extends Activity implements View.OnClickListener {
         SeekBarButtonSize.setProgress(Preferences.BUTTON_SIZE - 800);
         String percentage2 = new BigDecimal(String.valueOf(Preferences.BUTTON_SIZE * 0.1)).setScale(1, BigDecimal.ROUND_FLOOR).toPlainString() + "%";
         TextViewButtonSize.setText(percentage2);
-        SeekBarButtonSize.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        SeekBarButtonSize.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
+        {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b)
+            {
                 SharedPreferences settings = Utility.getContext().getSharedPreferences(Utility.getContext().getResources().getString(R.string.SHARED_PREFERENCES_SETTINGS), Context.MODE_PRIVATE);
                 SharedPreferences.Editor settingEditor = settings.edit();
                 Preferences.BUTTON_SIZE = i + 800;
@@ -316,12 +355,14 @@ public class SettingsActivity extends Activity implements View.OnClickListener {
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
+            public void onStartTrackingTouch(SeekBar seekBar)
+            {
 
             }
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
+            public void onStopTrackingTouch(SeekBar seekBar)
+            {
 
             }
         });
@@ -333,9 +374,11 @@ public class SettingsActivity extends Activity implements View.OnClickListener {
         SeekBarDisplayTextSize.setMax(100);
         SeekBarDisplayTextSize.setProgress(Preferences.DISPLAY_TEXT_SIZE - 50);
         TextViewDisplayTextSize.setText(String.valueOf(Preferences.DISPLAY_TEXT_SIZE + "%"));
-        SeekBarDisplayTextSize.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        SeekBarDisplayTextSize.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
+        {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b)
+            {
                 SharedPreferences settings = Utility.getContext().getSharedPreferences(Utility.getContext().getResources().getString(R.string.SHARED_PREFERENCES_SETTINGS), Context.MODE_PRIVATE);
                 SharedPreferences.Editor settingEditor = settings.edit();
                 Preferences.DISPLAY_TEXT_SIZE = i + 50;
@@ -346,21 +389,25 @@ public class SettingsActivity extends Activity implements View.OnClickListener {
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
+            public void onStartTrackingTouch(SeekBar seekBar)
+            {
 
             }
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
+            public void onStopTrackingTouch(SeekBar seekBar)
+            {
 
             }
         });
 
         // CONTACT THE DEVELOPER
         Button ButtonContact = (Button) findViewById(R.id.ButtonContact);
-        ButtonContact.setOnClickListener(new View.OnClickListener() {
+        ButtonContact.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
                         "mailto", "leander.lehmenkuehler@gmail.com", null));
                 startActivity(Intent.createChooser(emailIntent, "Send email..."));
@@ -369,9 +416,11 @@ public class SettingsActivity extends Activity implements View.OnClickListener {
 
         // RESET CALCULATOR
         Button ButtonReset = (Button) findViewById(R.id.ButtonReset);
-        ButtonReset.setOnClickListener(new View.OnClickListener() {
+        ButtonReset.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 SharedPreferences history = Utility.getContext().getSharedPreferences(Utility.getContext().getResources().getString(R.string.SHARED_PREFERENCES_HISTORY), Context.MODE_PRIVATE);
                 SharedPreferences.Editor historyEditor = history.edit();
                 historyEditor.clear();
@@ -393,13 +442,14 @@ public class SettingsActivity extends Activity implements View.OnClickListener {
     }
 
     @Override
-    public void onClick(View view) {
-
+    public void onClick(View view)
+    {
         Utility.vibrate();
         SharedPreferences settings = Utility.getContext().getSharedPreferences(Utility.getContext().getResources().getString(R.string.SHARED_PREFERENCES_SETTINGS), Context.MODE_PRIVATE);
         SharedPreferences.Editor settingEditor = settings.edit();
 
-        switch (view.getId()) {
+        switch (view.getId())
+        {
             case R.id.ButtonAlternativeModeOff:
                 Preferences.MODE_NOTATION_ALTERNATIVE = Preferences.NotationMode.DEC;
                 settingEditor.putInt("MODE_NOTATION_ALTERNATIVE", Preferences.MODE_NOTATION_ALTERNATIVE.ordinal());
@@ -429,10 +479,12 @@ public class SettingsActivity extends Activity implements View.OnClickListener {
         }
 
 
-        }
+    }
 
-    private void refreshAlternativeNotation() {
-        switch (Preferences.MODE_NOTATION_ALTERNATIVE) {
+    private void refreshAlternativeNotation()
+    {
+        switch (Preferences.MODE_NOTATION_ALTERNATIVE)
+        {
             case DEC:
                 ButtonAlternativeModeOff.setBackgroundResource(R.drawable.mode_button_active);
                 ButtonAlternativeModeSCI.setBackgroundResource(R.drawable.mode_button_disabled);
@@ -454,7 +506,8 @@ public class SettingsActivity extends Activity implements View.OnClickListener {
     }
 
     @Override
-    protected void onDestroy() {
+    protected void onDestroy()
+    {
         Intent returnIntent = new Intent();
         setResult(Activity.RESULT_CANCELED, returnIntent);
         super.onDestroy();

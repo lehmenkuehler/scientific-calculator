@@ -6,23 +6,27 @@ import org.lehmenkuehler.calculator.Enums.Component;
 import org.lehmenkuehler.calculator.Preferences;
 import org.lehmenkuehler.calculator.Utility;
 
-public class InputControl {
-
+public class InputControl
+{
     private static String toastMessage;
 
-    public static boolean validSubmission(Component comp, Component prev) {
+    public static boolean validSubmission(Component comp, Component prev)
+    {
         toastMessage = "SYNTAX ERROR";
         if (analyze(comp, prev)) return true;
-        else {
+        else
+        {
             Toast toast = Toast.makeText(Utility.getContext(), toastMessage, Toast.LENGTH_SHORT);
             toast.show();
             return false;
         }
     }
 
-    private static boolean analyze(Component comp, Component prev) {
+    private static boolean analyze(Component comp, Component prev)
+    {
         if (comp == Component.OPERATOR_FRACTION) return true;
-        switch (comp.getType()) {
+        switch (comp.getType())
+        {
             case FIGURE:
                 return figure(comp, prev);
             case OPERATOR:
@@ -52,28 +56,34 @@ public class InputControl {
         }
     }
 
-    private static boolean figure(Component comp, Component prev) {
+    private static boolean figure(Component comp, Component prev)
+    {
 
-        if (Preferences.MODE_NUMERAL == Preferences.NumeralMode.DEC) {
-            if (!Check.isFigureDEC(comp)) {
+        if (Preferences.MODE_NUMERAL == Preferences.NumeralMode.DEC)
+        {
+            if (!Check.isFigureDEC(comp))
+            {
                 toastMessage = comp.getSymbol() + " DOES NOT EXIST IN DEC";
                 return false;
             }
-        }
-        else if ((Preferences.MODE_NUMERAL == Preferences.NumeralMode.BIN)) {
-            if (!Check.isFigureBIN(comp)){
+        } else if ((Preferences.MODE_NUMERAL == Preferences.NumeralMode.BIN))
+        {
+            if (!Check.isFigureBIN(comp))
+            {
                 toastMessage = comp.getSymbol() + " DOES NOT EXIST IN BIN";
                 return false;
             }
-        }
-        else if ((Preferences.MODE_NUMERAL == Preferences.NumeralMode.OCT)) {
-            if (!Check.isFigureOCT(comp)) {
+        } else if ((Preferences.MODE_NUMERAL == Preferences.NumeralMode.OCT))
+        {
+            if (!Check.isFigureOCT(comp))
+            {
                 toastMessage = comp.getSymbol() + " DOES NOT EXIST IN OCT";
                 return false;
             }
         }
 
-        switch (prev.getType()) {
+        switch (prev.getType())
+        {
             case VOID:
                 return true;
             case FIGURE:
@@ -105,8 +115,10 @@ public class InputControl {
         }
     }
 
-    private static boolean operator(Component prev) {
-        switch (prev.getType()) {
+    private static boolean operator(Component prev)
+    {
+        switch (prev.getType())
+        {
             case VOID:
                 return false;
             case FIGURE:
@@ -138,8 +150,10 @@ public class InputControl {
         }
     }
 
-    private static boolean constant(Component prev) {
-        switch (prev.getType()) {
+    private static boolean constant(Component prev)
+    {
+        switch (prev.getType())
+        {
             case VOID:
                 return true;
             case FIGURE:
@@ -171,8 +185,10 @@ public class InputControl {
         }
     }
 
-    private static boolean function(Component prev) {
-        switch (prev.getType()) {
+    private static boolean function(Component prev)
+    {
+        switch (prev.getType())
+        {
             case VOID:
                 return true;
             case FIGURE:
@@ -204,8 +220,10 @@ public class InputControl {
         }
     }
 
-    private static boolean advancedFunction(Component prev) {
-        switch (prev.getType()) {
+    private static boolean advancedFunction(Component prev)
+    {
+        switch (prev.getType())
+        {
             case VOID:
                 return true;
             case FIGURE:
@@ -237,8 +255,10 @@ public class InputControl {
         }
     }
 
-    private static boolean connectiveFunction(Component prev) {
-        switch (prev.getType()) {
+    private static boolean connectiveFunction(Component prev)
+    {
+        switch (prev.getType())
+        {
             case VOID:
                 return false;
             case FIGURE:
@@ -270,8 +290,10 @@ public class InputControl {
         }
     }
 
-    private static boolean bracketOpen(Component prev) {
-        switch (prev.getType()) {
+    private static boolean bracketOpen(Component prev)
+    {
+        switch (prev.getType())
+        {
             case VOID:
                 return true;
             case FIGURE:
@@ -303,8 +325,10 @@ public class InputControl {
         }
     }
 
-    private static boolean bracketClose(Component prev) {
-        switch (prev.getType()) {
+    private static boolean bracketClose(Component prev)
+    {
+        switch (prev.getType())
+        {
             case VOID:
                 return false;
             case FIGURE:
@@ -336,8 +360,10 @@ public class InputControl {
         }
     }
 
-    private static boolean variable(Component prev) {
-        switch (prev.getType()) {
+    private static boolean variable(Component prev)
+    {
+        switch (prev.getType())
+        {
             case VOID:
                 return true;
             case FIGURE:
@@ -369,8 +395,10 @@ public class InputControl {
         }
     }
 
-    private static boolean dot(Component prev) {
-        switch (prev.getType()) {
+    private static boolean dot(Component prev)
+    {
+        switch (prev.getType())
+        {
             case VOID:
                 return false;
             case FIGURE:
@@ -402,8 +430,10 @@ public class InputControl {
         }
     }
 
-    private static boolean comma(Component prev) {
-        switch (prev.getType()) {
+    private static boolean comma(Component prev)
+    {
+        switch (prev.getType())
+        {
             case VOID:
                 return false;
             case FIGURE:
@@ -435,8 +465,10 @@ public class InputControl {
         }
     }
 
-    private static boolean sign(Component prev) {
-        switch (prev.getType()) {
+    private static boolean sign(Component prev)
+    {
+        switch (prev.getType())
+        {
             case VOID:
                 return true;
             case FIGURE:

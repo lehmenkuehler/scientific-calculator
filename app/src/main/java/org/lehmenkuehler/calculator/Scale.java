@@ -11,9 +11,10 @@ import android.widget.TextView;
 
 import org.lehmenkuehler.calculator.Enums.Metrics;
 
-public class Scale {
-
-    public static void everything(RelativeLayout relativeLayout) {
+public class Scale
+{
+    public static void everything(RelativeLayout relativeLayout)
+    {
         relativeLayout.setPadding(
                 Metrics.PADDING_SIDES.getValue(),
                 Metrics.PADDING_TOP.getValue(),
@@ -22,7 +23,8 @@ public class Scale {
         );
     }
 
-    public static void largeButton(Button button) {
+    public static void largeButton(Button button)
+    {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 Metrics.BUTTON_LARGE_WIDTH.getValue(),
                 Metrics.BUTTON_LARGE_HEIGHT.getValue()
@@ -40,7 +42,8 @@ public class Scale {
         );
     }
 
-    public static void smallButton(Button button) {
+    public static void smallButton(Button button)
+    {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 Metrics.BUTTON_SMALL_WIDTH.getValue(),
                 Metrics.BUTTON_SMALL_HEIGHT.getValue()
@@ -58,7 +61,8 @@ public class Scale {
         );
     }
 
-    public static void largeTextView(TextView textView) {
+    public static void largeTextView(TextView textView)
+    {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 Metrics.TEXTVIEW_LARGE_WIDTH.getValue(),
                 Metrics.TEXTVIEW_LARGE_HEIGHT.getValue()
@@ -70,7 +74,8 @@ public class Scale {
         );
     }
 
-    public static void smallTextView(TextView textView) {
+    public static void smallTextView(TextView textView)
+    {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 Metrics.TEXTVIEW_SMALL_WIDTH.getValue(),
                 Metrics.TEXTVIEW_SMALL_HEIGHT.getValue()
@@ -82,7 +87,8 @@ public class Scale {
         );
     }
 
-    public static void ouputDisplay(TextView textView) {
+    public static void ouputDisplay(TextView textView)
+    {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 Metrics.DISPLAY_OUTPUT_HEIGHT.getValue()
@@ -100,7 +106,8 @@ public class Scale {
         );
     }
 
-    public static void outputLinearLayout(LinearLayout linearLayout) {
+    public static void outputLinearLayout(LinearLayout linearLayout)
+    {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 Metrics.DISPLAY_OUTPUT_HEIGHT.getValue()
@@ -115,7 +122,8 @@ public class Scale {
         linearLayout.setLayoutParams(params);
     }
 
-    public static void modeDisplay(TextView textView) {
+    public static void modeDisplay(TextView textView)
+    {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 Metrics.TEXTVIEW_MODE_WIDTH.getValue(),
                 Metrics.TEXTVIEW_MODE_HEIGHT.getValue()
@@ -127,7 +135,8 @@ public class Scale {
         );
     }
 
-    public static void inputDisplay(EditText editText) {
+    public static void inputDisplay(EditText editText)
+    {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 Metrics.DISPLAY_INPUT_HEIGHT.getValue()
@@ -146,14 +155,16 @@ public class Scale {
         );
     }
 
-    public static void scaleMenuScrollView(ScrollView scrollView ,int elementHeight, int elementCount) {
+    public static void scaleMenuScrollView(ScrollView scrollView, int elementHeight, int elementCount)
+    {
         int availableHeight = Metrics.MENU_HEIGHT.getValue() - Metrics.MENU_HEADLINE_HEIGHT.getValue() - Metrics.MENU_BUTTONS_HEIGHT.getValue();
-        if (elementCount * elementHeight < availableHeight) {
+        if (elementCount * elementHeight < availableHeight)
+        {
             scrollView.getLayoutParams().height = elementCount * elementHeight;
-        } else {
+        } else
+        {
             int possibleElements = availableHeight / elementHeight;
             scrollView.getLayoutParams().height = possibleElements * elementHeight;
         }
     }
-
 }

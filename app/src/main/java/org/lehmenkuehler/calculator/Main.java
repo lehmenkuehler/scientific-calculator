@@ -53,10 +53,8 @@ import org.lehmenkuehler.calculator.Menus.MenuPrefix;
 import org.lehmenkuehler.calculator.Menus.MenuReview;
 import org.lehmenkuehler.calculator.Menus.MenuWelcome;
 
-
 public class Main extends Activity implements View.OnClickListener, View.OnLongClickListener
 {
-
     public static Component externallyAddedElement = Component.VOID;
     public static int answerId = 0;
 
@@ -1199,7 +1197,6 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
 
     private void setScale()
     {
-
         ArrayList<View> keys = childrenArray(linearLayoutKeyboard);
         ArrayList<View> modi = childrenArray(LinearLayoutModes);
 
@@ -1459,6 +1456,5 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
             cursorManager.updateCursor(displayInput);
         }
     }
-
 }
 

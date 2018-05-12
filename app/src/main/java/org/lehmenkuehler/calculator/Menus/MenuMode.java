@@ -21,8 +21,8 @@ import org.lehmenkuehler.calculator.Preferences;
 import org.lehmenkuehler.calculator.R;
 import org.lehmenkuehler.calculator.Utility;
 
-public class MenuMode implements View.OnClickListener {
-
+public class MenuMode implements View.OnClickListener
+{
     public PopupWindow popupMode;
     private final Context context;
     private final DarkBackground darkBackground;
@@ -59,9 +59,9 @@ public class MenuMode implements View.OnClickListener {
 
     private SharedPreferences settings;
 
-
     @SuppressLint("InflateParams")
-    public MenuMode(Context c) {
+    public MenuMode(Context c)
+    {
 
         context = c;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -152,9 +152,11 @@ public class MenuMode implements View.OnClickListener {
         ButtonClose.getLayoutParams().height = Metrics.MENU_BUTTONS_HEIGHT.getValue();
         ButtonClose.setText(context.getResources().getString(R.string.MENU_BUTTON_EXIT));
         ButtonClose.setTextSize(TypedValue.COMPLEX_UNIT_PX, Metrics.MENU_CONSTANT_DESCRIPTION_TEXT_SIZE.getValue());
-        ButtonClose.setOnClickListener(new Button.OnClickListener() {
+        ButtonClose.setOnClickListener(new Button.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 Utility.vibrate();
                 popupMode.dismiss();
                 darkBackground.dismiss();
@@ -163,7 +165,8 @@ public class MenuMode implements View.OnClickListener {
 
     }
 
-    private void scaleButton(Button button) {
+    private void scaleButton(Button button)
+    {
         LinearLayout.LayoutParams params = new TableRow.LayoutParams(Metrics.MENU_MODE_BUTTON_WIDTH.getValue(), Metrics.MENU_MODE_BUTTON_HEIGHT.getValue());
         params.setMargins(Metrics.MENU_MODE_BUTTON_MARGIN_SIDES.getValue(), 0, Metrics.MENU_MODE_BUTTON_MARGIN_SIDES.getValue(), 0);
         button.setLayoutParams(params);
@@ -172,13 +175,15 @@ public class MenuMode implements View.OnClickListener {
         button.setTextSize(TypedValue.COMPLEX_UNIT_PX, Metrics.MENU_MODE_BUTTON_TEXT_SIZE.getValue());
     }
 
-    private void scaleHeadline(TextView textView) {
+    private void scaleHeadline(TextView textView)
+    {
         ViewGroup.LayoutParams params = new TableRow.LayoutParams(Metrics.MENU_WIDTH.getValue(), Metrics.MENU_MODE_ELEMENT1_HEIGHT.getValue(), 0f);
         textView.setLayoutParams(params);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, Metrics.MENU_HEADLINE_TEXT_SIZE.getValue());
     }
 
-    public void initiatePopupWindow() {
+    public void initiatePopupWindow()
+    {
 
         darkBackground.initiate();
 
@@ -201,8 +206,10 @@ public class MenuMode implements View.OnClickListener {
         settings = Utility.getContext().getSharedPreferences(Utility.getContext().getResources().getString(R.string.SHARED_PREFERENCES_SETTINGS), Context.MODE_PRIVATE);
     }
 
-    private void refreshAngularMode() {
-        switch (Preferences.MODE_ANGULAR) {
+    private void refreshAngularMode()
+    {
+        switch (Preferences.MODE_ANGULAR)
+        {
             case RAD:
                 ButtonAngularModeRAD.setBackgroundResource(R.drawable.mode_button_active);
                 ButtonAngularModeDEG.setBackgroundResource(R.drawable.mode_button_disabled);
@@ -223,8 +230,10 @@ public class MenuMode implements View.OnClickListener {
         }
     }
 
-    private void refreshAngularModePolar() {
-        switch (Preferences.MODE_ANGULAR_POLAR) {
+    private void refreshAngularModePolar()
+    {
+        switch (Preferences.MODE_ANGULAR_POLAR)
+        {
             case RAD:
                 ButtonAngularModePolarRAD.setBackgroundResource(R.drawable.mode_button_active);
                 ButtonAngularModePolarDEG.setBackgroundResource(R.drawable.mode_button_disabled);
@@ -245,8 +254,10 @@ public class MenuMode implements View.OnClickListener {
         }
     }
 
-    private void refreshNumeralMode() {
-        switch (Preferences.MODE_NUMERAL) {
+    private void refreshNumeralMode()
+    {
+        switch (Preferences.MODE_NUMERAL)
+        {
             case BIN:
                 ButtonNumeralModeBIN.setBackgroundResource(R.drawable.mode_button_active);
                 ButtonNumeralModeOCT.setBackgroundResource(R.drawable.mode_button_disabled);
@@ -276,8 +287,10 @@ public class MenuMode implements View.OnClickListener {
         }
     }
 
-    private void refreshComplexMode() {
-        switch (Preferences.MODE_COMPLEX) {
+    private void refreshComplexMode()
+    {
+        switch (Preferences.MODE_COMPLEX)
+        {
             case RECT:
                 ButtonComplexModeRECT.setBackgroundResource(R.drawable.mode_button_active);
                 ButtonComplexModePOLAR.setBackgroundResource(R.drawable.mode_button_disabled);
@@ -291,8 +304,10 @@ public class MenuMode implements View.OnClickListener {
         }
     }
 
-    private void refreshNotationMode() {
-        switch (Preferences.MODE_NOTATION) {
+    private void refreshNotationMode()
+    {
+        switch (Preferences.MODE_NOTATION)
+        {
             case DEC:
                 ButtonNotationModeDEC.setBackgroundResource(R.drawable.mode_button_active);
                 ButtonNotationModeSCI.setBackgroundResource(R.drawable.mode_button_disabled);
@@ -313,7 +328,8 @@ public class MenuMode implements View.OnClickListener {
         }
     }
 
-    private void updateModeBar() {
+    private void updateModeBar()
+    {
         ((TextView) ((Main) context).findViewById(R.id.TextViewModeAngular)).setText(Preferences.MODE_ANGULAR.getModeBarText());
         ((TextView) ((Main) context).findViewById(R.id.TextViewModeNumeral)).setText(Preferences.MODE_NUMERAL.getModeBarText());
         ((TextView) ((Main) context).findViewById(R.id.TextViewModeComplex)).setText(Preferences.MODE_COMPLEX.getModeBarText());
@@ -321,13 +337,15 @@ public class MenuMode implements View.OnClickListener {
     }
 
     @Override
-    public void onClick(View view) {
+    public void onClick(View view)
+    {
 
         Utility.vibrate();
         SharedPreferences settings = Utility.getContext().getSharedPreferences(Utility.getContext().getResources().getString(R.string.SHARED_PREFERENCES_SETTINGS), Context.MODE_PRIVATE);
         SharedPreferences.Editor settingEditor = settings.edit();
 
-        switch (view.getId()) {
+        switch (view.getId())
+        {
 
             // ANGULAR MODE
             case R.id.ButtonAngularModeRAD:

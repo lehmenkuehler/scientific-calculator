@@ -2,12 +2,14 @@ package org.lehmenkuehler.calculator;
 
 import java.math.BigDecimal;
 
-public class Numeral {
-
+public class Numeral
+{
     private static final int precision = Preferences.PRECISION;
 
-    static String convertMode(BigDecimal value, Preferences.NumeralMode numSystem) {
-        switch (numSystem) {
+    static String convertMode(BigDecimal value, Preferences.NumeralMode numSystem)
+    {
+        switch (numSystem)
+        {
             case BIN:
                 return decToBin(value);
             case OCT:
@@ -19,8 +21,10 @@ public class Numeral {
         }
     }
 
-    public static BigDecimal parseToDec(String s) {
-        switch (Preferences.MODE_NUMERAL) {
+    public static BigDecimal parseToDec(String s)
+    {
+        switch (Preferences.MODE_NUMERAL)
+        {
             case BIN:
                 return binToDec(s);
             case OCT:
@@ -32,32 +36,39 @@ public class Numeral {
         }
     }
 
-    private static BigDecimal binToDec(String s) {
+    private static BigDecimal binToDec(String s)
+    {
         BigDecimal result = BigDecimal.ZERO;
         int stringLength = s.length();
         boolean integer = true;
         int radixPos = stringLength;
 
-        for (int i = 0; i < stringLength; i++) {
-            if (s.charAt(i) == '.') {
+        for (int i = 0; i < stringLength; i++)
+        {
+            if (s.charAt(i) == '.')
+            {
                 radixPos = i;
             }
         }
 
-        for (int i = 0; i < stringLength; i++) {
+        for (int i = 0; i < stringLength; i++)
+        {
             BigDecimal base;
             int n;
 
-            if (integer) {
+            if (integer)
+            {
                 base = new BigDecimal("2");
                 n = radixPos - i - 1;
 
-            } else {
+            } else
+            {
                 base = new BigDecimal("0.5");
                 n = i - radixPos;
             }
 
-            switch (s.charAt(i)) {
+            switch (s.charAt(i))
+            {
                 case '0':
                     break;
                 case '1':
@@ -74,32 +85,39 @@ public class Numeral {
         return result;
     }
 
-    private static BigDecimal hexToDec(String s) {
+    private static BigDecimal hexToDec(String s)
+    {
         BigDecimal result = BigDecimal.ZERO;
         int stringLength = s.length();
         boolean integer = true;
         int radixPos = stringLength;
 
-        for (int i = 0; i < stringLength; i++) {
-            if (s.charAt(i) == '.') {
+        for (int i = 0; i < stringLength; i++)
+        {
+            if (s.charAt(i) == '.')
+            {
                 radixPos = i;
             }
         }
 
-        for (int i = 0; i < stringLength; i++) {
+        for (int i = 0; i < stringLength; i++)
+        {
             BigDecimal base;
             int n;
 
-            if (integer) {
+            if (integer)
+            {
                 base = new BigDecimal("16");
                 n = radixPos - i - 1;
 
-            } else {
+            } else
+            {
                 base = new BigDecimal("0.0625");
                 n = i - radixPos;
             }
 
-            switch (s.charAt(i)) {
+            switch (s.charAt(i))
+            {
                 case '0':
                     result = result.add(base.pow(n).multiply(BigDecimal.ZERO));
                     break;
@@ -159,32 +177,39 @@ public class Numeral {
         return result;
     }
 
-    private static BigDecimal octToDec(String s) {
+    private static BigDecimal octToDec(String s)
+    {
         BigDecimal result = BigDecimal.ZERO;
         int stringLength = s.length();
         boolean integer = true;
         int radixPos = stringLength;
 
-        for (int i = 0; i < stringLength; i++) {
-            if (s.charAt(i) == '.') {
+        for (int i = 0; i < stringLength; i++)
+        {
+            if (s.charAt(i) == '.')
+            {
                 radixPos = i;
             }
         }
 
-        for (int i = 0; i < stringLength; i++) {
+        for (int i = 0; i < stringLength; i++)
+        {
             BigDecimal base;
             int n;
 
-            if (integer) {
+            if (integer)
+            {
                 base = new BigDecimal("8");
                 n = radixPos - i - 1;
 
-            } else {
+            } else
+            {
                 base = new BigDecimal("0.125");
                 n = i - radixPos;
             }
 
-            switch (s.charAt(i)) {
+            switch (s.charAt(i))
+            {
                 case '0':
                     result = result.add(base.pow(n).multiply(BigDecimal.ZERO));
                     break;
@@ -220,28 +245,35 @@ public class Numeral {
         return result;
     }
 
-    private static String decToHex(BigDecimal b) {
+    private static String decToHex(BigDecimal b)
+    {
         String result = "";
         boolean startHasBeenFound = false;
         if (b.compareTo(BigDecimal.ZERO) == 0) return "0";
-        if (b.compareTo(BigDecimal.ZERO) < 0) {
+        if (b.compareTo(BigDecimal.ZERO) < 0)
+        {
             result += "-";
             b = b.abs();
         }
 
         if (b.compareTo(BigDecimal.ONE) < 0) result += "0";
-        else {
-            for (int i = 32; i >= 0; i--) {
-                if (new BigDecimal("16").pow(i).compareTo(b) <= 0) {
+        else
+        {
+            for (int i = 32; i >= 0; i--)
+            {
+                if (new BigDecimal("16").pow(i).compareTo(b) <= 0)
+                {
                     BigDecimal counter = BigDecimal.ONE;
                     startHasBeenFound = true;
-                    while (new BigDecimal("16").pow(i).multiply(counter).compareTo(b) <= 0 && counter.compareTo(new BigDecimal("16")) < 0) {
+                    while (new BigDecimal("16").pow(i).multiply(counter).compareTo(b) <= 0 && counter.compareTo(new BigDecimal("16")) < 0)
+                    {
                         counter = counter.add(BigDecimal.ONE);
                     }
                     counter = counter.subtract(BigDecimal.ONE);
                     b = b.subtract(new BigDecimal("16").pow(i).multiply(counter));
                     int q = counter.intValue();
-                    switch (q) {
+                    switch (q)
+                    {
                         case 1:
                             result += "1";
                             break;
@@ -297,16 +329,20 @@ public class Numeral {
 
         result += ".";
 
-        for (int i = 1; i <= precision; i++) {
-            if (new BigDecimal("0.0625").pow(i).compareTo(b) <= 0) {
+        for (int i = 1; i <= precision; i++)
+        {
+            if (new BigDecimal("0.0625").pow(i).compareTo(b) <= 0)
+            {
                 BigDecimal counter = BigDecimal.ONE;
-                while (new BigDecimal("0.0625").pow(i).multiply(counter).compareTo(b) <= 0 && counter.compareTo(new BigDecimal("16")) < 0) {
+                while (new BigDecimal("0.0625").pow(i).multiply(counter).compareTo(b) <= 0 && counter.compareTo(new BigDecimal("16")) < 0)
+                {
                     counter = counter.add(BigDecimal.ONE);
                 }
                 counter = counter.subtract(BigDecimal.ONE);
                 b = b.subtract(new BigDecimal("0.0625").pow(i).multiply(counter));
                 int q = counter.intValue();
-                switch (q) {
+                switch (q)
+                {
                     case 1:
                         result += "1";
                         break;
@@ -359,28 +395,35 @@ public class Numeral {
         return result;
     }
 
-    private static String decToBin(BigDecimal b) {
+    private static String decToBin(BigDecimal b)
+    {
         String result = "";
         boolean startHasBeenFound = false;
         if (b.compareTo(BigDecimal.ZERO) == 0) return "0";
-        if (b.compareTo(BigDecimal.ZERO) < 0) {
+        if (b.compareTo(BigDecimal.ZERO) < 0)
+        {
             result += "-";
             b = b.abs();
         }
 
         if (b.compareTo(BigDecimal.ONE) < 0) result += "0";
-        else {
-            for (int i = 32; i >= 0; i--) {
-                if (new BigDecimal("2").pow(i).compareTo(b) <= 0) {
+        else
+        {
+            for (int i = 32; i >= 0; i--)
+            {
+                if (new BigDecimal("2").pow(i).compareTo(b) <= 0)
+                {
                     BigDecimal counter = BigDecimal.ONE;
                     startHasBeenFound = true;
-                    while (new BigDecimal("2").pow(i).multiply(counter).compareTo(b) <= 0 && counter.compareTo(new BigDecimal("2")) < 0) {
+                    while (new BigDecimal("2").pow(i).multiply(counter).compareTo(b) <= 0 && counter.compareTo(new BigDecimal("2")) < 0)
+                    {
                         counter = counter.add(BigDecimal.ONE);
                     }
                     counter = counter.subtract(BigDecimal.ONE);
                     b = b.subtract(new BigDecimal("2").pow(i).multiply(counter));
                     int q = counter.intValue();
-                    switch (q) {
+                    switch (q)
+                    {
                         case 1:
                             result += "1";
                             break;
@@ -394,16 +437,20 @@ public class Numeral {
 
         result += ".";
 
-        for (int i = 1; i <= precision; i++) {
-            if (new BigDecimal("0.5").pow(i).compareTo(b) <= 0) {
+        for (int i = 1; i <= precision; i++)
+        {
+            if (new BigDecimal("0.5").pow(i).compareTo(b) <= 0)
+            {
                 BigDecimal counter = BigDecimal.ONE;
-                while (new BigDecimal("0.5").pow(i).multiply(counter).compareTo(b) <= 0 && counter.compareTo(new BigDecimal("2")) < 0) {
+                while (new BigDecimal("0.5").pow(i).multiply(counter).compareTo(b) <= 0 && counter.compareTo(new BigDecimal("2")) < 0)
+                {
                     counter = counter.add(BigDecimal.ONE);
                 }
                 counter = counter.subtract(BigDecimal.ONE);
                 b = b.subtract(new BigDecimal("0.5").pow(i).multiply(counter));
                 int q = counter.intValue();
-                switch (q) {
+                switch (q)
+                {
                     case 1:
                         result += "1";
                         break;
@@ -414,28 +461,35 @@ public class Numeral {
         return result;
     }
 
-    private static String decToOct(BigDecimal b) {
+    private static String decToOct(BigDecimal b)
+    {
         String result = "";
         boolean startHasBeenFound = false;
         if (b.compareTo(BigDecimal.ZERO) == 0) return "0";
-        if (b.compareTo(BigDecimal.ZERO) < 0) {
+        if (b.compareTo(BigDecimal.ZERO) < 0)
+        {
             result += "-";
             b = b.abs();
         }
 
         if (b.compareTo(BigDecimal.ONE) < 0) result += "0";
-        else {
-            for (int i = 32; i >= 0; i--) {
-                if (new BigDecimal("8").pow(i).compareTo(b) <= 0) {
+        else
+        {
+            for (int i = 32; i >= 0; i--)
+            {
+                if (new BigDecimal("8").pow(i).compareTo(b) <= 0)
+                {
                     BigDecimal counter = BigDecimal.ONE;
                     startHasBeenFound = true;
-                    while (new BigDecimal("8").pow(i).multiply(counter).compareTo(b) <= 0 && counter.compareTo(new BigDecimal("8")) < 0) {
+                    while (new BigDecimal("8").pow(i).multiply(counter).compareTo(b) <= 0 && counter.compareTo(new BigDecimal("8")) < 0)
+                    {
                         counter = counter.add(BigDecimal.ONE);
                     }
                     counter = counter.subtract(BigDecimal.ONE);
                     b = b.subtract(new BigDecimal("8").pow(i).multiply(counter));
                     int q = counter.intValue();
-                    switch (q) {
+                    switch (q)
+                    {
                         case 1:
                             result += "1";
                             break;
@@ -467,16 +521,20 @@ public class Numeral {
 
         result += ".";
 
-        for (int i = 1; i <= precision; i++) {
-            if (new BigDecimal("0.125").pow(i).compareTo(b) <= 0) {
+        for (int i = 1; i <= precision; i++)
+        {
+            if (new BigDecimal("0.125").pow(i).compareTo(b) <= 0)
+            {
                 BigDecimal counter = BigDecimal.ONE;
-                while (new BigDecimal("0.125").pow(i).multiply(counter).compareTo(b) <= 0 && counter.compareTo(new BigDecimal("8")) < 0) {
+                while (new BigDecimal("0.125").pow(i).multiply(counter).compareTo(b) <= 0 && counter.compareTo(new BigDecimal("8")) < 0)
+                {
                     counter = counter.add(BigDecimal.ONE);
                 }
                 counter = counter.subtract(BigDecimal.ONE);
                 b = b.subtract(new BigDecimal("0.125").pow(i).multiply(counter));
                 int q = counter.intValue();
-                switch (q) {
+                switch (q)
+                {
                     case 1:
                         result += "1";
                         break;
@@ -504,6 +562,4 @@ public class Numeral {
         }
         return result;
     }
-
-
 }

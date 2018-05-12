@@ -6,8 +6,8 @@ import java.math.BigDecimal;
 import org.lehmenkuehler.calculator.R;
 import org.lehmenkuehler.calculator.Utility;
 
-public enum Converter {
-
+public enum Converter
+{
     // DISTANCE
     // SI and GCS system
     UNIT_FEMTOMETRE(Tag.DISTANCE, "fm", Utility.getContext().getString(R.string.UNIT_FEMTOMETRE), new BigDecimal("1E-15")),
@@ -160,8 +160,8 @@ public enum Converter {
 
     UNIT_KNOTS(Tag.VELOCITY, "kn", Utility.getContext().getString(R.string.UNIT_KNOTS), new BigDecimal("463").divide(new BigDecimal("900"), 150, BigDecimal.ROUND_HALF_UP)),
 
-    UNIT_SPEED_OF_LIGHT(Tag.VELOCITY, "c", Utility.getContext().getString(R.string.UNIT_SPEED_OF_LIGHT),new BigDecimal("299792458")),
-    UNIT_MACH_0(Tag.VELOCITY, "Ma", Utility.getContext().getString(R.string.UNIT_MACH_0),new BigDecimal("331")),
+    UNIT_SPEED_OF_LIGHT(Tag.VELOCITY, "c", Utility.getContext().getString(R.string.UNIT_SPEED_OF_LIGHT), new BigDecimal("299792458")),
+    UNIT_MACH_0(Tag.VELOCITY, "Ma", Utility.getContext().getString(R.string.UNIT_MACH_0), new BigDecimal("331")),
 
     // TIME
 
@@ -176,36 +176,41 @@ public enum Converter {
     UNIT_YEAR(Tag.TIME, "a", Utility.getContext().getString(R.string.UNIT_YEAR), new BigDecimal("31536000"));
 
 
-
     private final Tag tag;
-    private String symbol = "";
-    private String description = "";
-    private BigDecimal value = BigDecimal.ONE;
+    private String symbol;
+    private String description;
+    private BigDecimal value;
 
-    Converter(Tag type, String symbol, String description, BigDecimal value) {
+    Converter(Tag type, String symbol, String description, BigDecimal value)
+    {
         this.tag = type;
         this.symbol = symbol;
         this.description = description;
         this.value = value;
     }
 
-    public Tag getTag() {
+    public Tag getTag()
+    {
         return tag;
     }
 
-    public String getSymbol() {
+    public String getSymbol()
+    {
         return symbol;
     }
 
-    public String getDescription() {
+    public String getDescription()
+    {
         return description;
     }
 
-    public BigDecimal getValue() {
+    public BigDecimal getValue()
+    {
         return value;
     }
 
-    public enum Tag {
+    public enum Tag
+    {
         DISTANCE(Utility.getContext().getString(R.string.CONVERT_DISTANCE)),
         AREA(Utility.getContext().getString(R.string.CONVERT_AREA)),
         VOLUME(Utility.getContext().getString(R.string.CONVERT_VOLUME)),
@@ -225,13 +230,14 @@ public enum Converter {
 
         private final String name;
 
-        Tag(String name) {
+        Tag(String name)
+        {
             this.name = name;
         }
 
-        public String getName() {
+        public String getName()
+        {
             return name;
         }
-
     }
 }

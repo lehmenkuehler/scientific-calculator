@@ -1,7 +1,7 @@
 package org.lehmenkuehler.calculator.Enums;
 
-public enum Metrics {
-
+public enum Metrics
+{
     PADDING_ULTIMATE(0.01), // relative to the smaller screen side - backup value
     PADDING_SIDES(0.01), // relative to the smaller screen side
     PADDING_BOTTOM(0.01), // relative to the smaller screen side
@@ -111,30 +111,37 @@ public enum Metrics {
     double ratio = 1.0;
     int size = 0;
 
-    Metrics(double ratio) {
+    Metrics(double ratio)
+    {
         this.ratio = ratio;
     }
 
-    Metrics(int size) {
+    Metrics(int size)
+    {
         this.size = size;
     }
 
-    Metrics() {
+    Metrics()
+    {
     }
 
-    public double getRatio() {
+    public double getRatio()
+    {
         return ratio;
     }
 
-    public int getValue() {
+    public int getValue()
+    {
         return size;
     }
 
-    public void setSize(int size) {
+    public void setSize(int size)
+    {
         this.size = size;
     }
 
-    public void setRatio(double ratio) {
+    public void setRatio(double ratio)
+    {
         this.ratio = ratio;
     }
 }

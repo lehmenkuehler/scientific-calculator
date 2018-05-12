@@ -25,8 +25,8 @@ import org.lehmenkuehler.calculator.R;
 import org.lehmenkuehler.calculator.Scale;
 import org.lehmenkuehler.calculator.Utility;
 
-public class MenuHistory {
-
+public class MenuHistory
+{
     private final Context context;
 
     private final DarkBackground darkBackground;
@@ -39,14 +39,16 @@ public class MenuHistory {
     private Button ButtonClose, ButtonClearHistory;
 
     @SuppressLint("InflateParams")
-    public MenuHistory(Context c) {
+    public MenuHistory(Context c)
+    {
         context = c;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         layoutMenu = inflater.inflate(R.layout.menu_1, null);
         darkBackground = new DarkBackground(context);
     }
 
-    public void initiateMenu() {
+    public void initiateMenu()
+    {
 
         menu = new PopupWindow(layoutMenu, Metrics.MENU_WIDTH.getValue(), Metrics.MENU_HEIGHT.getValue(), true);
         menu.setAnimationStyle(R.style.MenuAnimation);
@@ -65,9 +67,11 @@ public class MenuHistory {
         ButtonClose.setText(context.getResources().getString(R.string.MENU_BUTTON_EXIT));
         ButtonClose.setTextColor(ContextCompat.getColor(Utility.getContext(), R.color.MENU_BUTTON_TEXT));
         ButtonClose.setTextSize(TypedValue.COMPLEX_UNIT_PX, Metrics.MENU_CONSTANT_DESCRIPTION_TEXT_SIZE.getValue());
-        ButtonClose.setOnClickListener(new Button.OnClickListener() {
+        ButtonClose.setOnClickListener(new Button.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 Utility.vibrate();
                 darkBackground.dismiss();
                 menu.dismiss();
@@ -80,9 +84,11 @@ public class MenuHistory {
         ButtonClearHistory.setText(context.getResources().getString(R.string.MENU_BUTTON_CLEAR));
         ButtonClearHistory.setTextColor(ContextCompat.getColor(Utility.getContext(), R.color.MENU_BUTTON_TEXT));
         ButtonClearHistory.setTextSize(TypedValue.COMPLEX_UNIT_PX, Metrics.MENU_CONSTANT_DESCRIPTION_TEXT_SIZE.getValue());
-        ButtonClearHistory.setOnClickListener(new Button.OnClickListener() {
+        ButtonClearHistory.setOnClickListener(new Button.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 Utility.vibrate();
                 ContentLayout.removeAllViews();
                 History.clearHistory();
@@ -102,8 +108,8 @@ public class MenuHistory {
         loadHistory();
     }
 
-
-    private void loadHistory() {
+    private void loadHistory()
+    {
 
         ContentLayout.removeAllViews();
         ContentLayout.setPadding(0, 0, 0, 0);
@@ -113,7 +119,8 @@ public class MenuHistory {
         if (historyLength > Preferences.HISTORY_LENGTH)
             historyLength = Preferences.HISTORY_LENGTH;
 
-        if (historyLength == 0) {
+        if (historyLength == 0)
+        {
             Scale.scaleMenuScrollView(ScrollView, Metrics.MENU_ELEMENT_HEIGHT.getValue(), 1);
             ViewGroup.LayoutParams messageParams = new TableRow.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, Metrics.MENU_ELEMENT_HEIGHT.getValue(), 0f);
             TextView message = new TextView(context);
@@ -124,8 +131,8 @@ public class MenuHistory {
             message.setBackgroundResource(R.drawable.menu_element_gradient);
             message.setText(R.string.MENU_HISTORY_EMPTY);
             ContentLayout.addView(message);
-        } else {
-
+        } else
+        {
             ContentLayout.setPadding((int) (Metrics.MENU_WIDTH.getValue() * 0.02), 0, (int) (Metrics.MENU_WIDTH.getValue() * 0.02), 0);
 
             ViewGroup.LayoutParams equationParams = new TableRow.LayoutParams((int) (Metrics.MENU_WIDTH.getValue() * 0.96), (int) (Metrics.MENU_ELEMENT_HEIGHT.getValue() * 0.6), 0f);
@@ -133,7 +140,8 @@ public class MenuHistory {
 
             Scale.scaleMenuScrollView(ScrollView, equationParams.height + resultParams.height, historyLength);
 
-            for (int i = History.getNumberOfElements(); i > History.getNumberOfElements() - historyLength; i--) {
+            for (int i = History.getNumberOfElements(); i > History.getNumberOfElements() - historyLength; i--)
+            {
 
                 TextView equation = new TextView(context);
                 equation.setLayoutParams(equationParams);
@@ -152,9 +160,11 @@ public class MenuHistory {
                 result.setTextSize(TypedValue.COMPLEX_UNIT_PX, Metrics.MENU_CONSTANT_SYMBOL_TEXT_SIZE.getValue());
                 result.setTypeface(Typeface.DEFAULT_BOLD);
                 result.setTextColor(ContextCompat.getColor(Utility.getContext(), R.color.MENU_ELEMENT_TEXT_SECONDARY));
-                result.setOnClickListener(new View.OnClickListener() {
+                result.setOnClickListener(new View.OnClickListener()
+                {
                     @Override
-                    public void onClick(View v) {
+                    public void onClick(View v)
+                    {
                         Main.externallyAddedElement = Component.ANSWER;
                         Main.answerId = v.getId();
                         Utility.vibrate();
@@ -166,8 +176,5 @@ public class MenuHistory {
                 ContentLayout.addView(result);
             }
         }
-
-
-
     }
 }

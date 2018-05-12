@@ -23,8 +23,8 @@ import org.lehmenkuehler.calculator.R;
 import org.lehmenkuehler.calculator.Scale;
 import org.lehmenkuehler.calculator.Utility;
 
-public class MenuPrefix {
-
+public class MenuPrefix
+{
     private final Context context;
 
     private final DarkBackground darkBackground;
@@ -37,15 +37,16 @@ public class MenuPrefix {
     private Button ButtonClose;
 
     @SuppressLint("InflateParams")
-    public MenuPrefix(Context c) {
+    public MenuPrefix(Context c)
+    {
         context = c;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         layoutMenu = inflater.inflate(R.layout.menu_1, null);
         darkBackground = new DarkBackground(context);
     }
 
-    public void initiateMenu() {
-
+    public void initiateMenu()
+    {
         menu = new PopupWindow(layoutMenu, Metrics.MENU_WIDTH.getValue(), Metrics.MENU_HEIGHT.getValue(), true);
         menu.setAnimationStyle(R.style.MenuAnimation);
         darkBackground.initiate();
@@ -61,9 +62,11 @@ public class MenuPrefix {
         ButtonClose.setText(context.getResources().getString(R.string.MENU_BUTTON_EXIT));
         ButtonClose.setTextColor(ContextCompat.getColor(Utility.getContext(), R.color.MENU_BUTTON_TEXT));
         ButtonClose.setTextSize(TypedValue.COMPLEX_UNIT_PX, Metrics.MENU_CONSTANT_DESCRIPTION_TEXT_SIZE.getValue());
-        ButtonClose.setOnClickListener(new Button.OnClickListener() {
+        ButtonClose.setOnClickListener(new Button.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 Utility.vibrate();
                 darkBackground.dismiss();
                 menu.dismiss();
@@ -77,8 +80,8 @@ public class MenuPrefix {
         openGroup();
     }
 
-    private void openGroup() {
-
+    private void openGroup()
+    {
         ButtonLayout.removeAllViews();
         ContentLayout.removeAllViews();
         ScrollView.scrollTo(0, 0);
@@ -93,9 +96,10 @@ public class MenuPrefix {
         ViewGroup.LayoutParams descriptionParams = new TableRow.LayoutParams(Metrics.MENU_CONSTANTS_DESCRIPTION_WIDTH.getValue(), ViewGroup.LayoutParams.MATCH_PARENT, 0f);
         ViewGroup.LayoutParams wrapperParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, Metrics.MENU_ELEMENT_HEIGHT.getValue());
 
-        for (final Component component : Component.values()) {
-            if (component.getConstantTag() == Component.ConstantTag.PREFIX) {
-
+        for (final Component component : Component.values())
+        {
+            if (component.getConstantTag() == Component.ConstantTag.PREFIX)
+            {
                 elementCounter++;
 
                 LinearLayout wrapper = new LinearLayout(context);
@@ -121,9 +125,11 @@ public class MenuPrefix {
                 description.setTextColor(ContextCompat.getColor(Utility.getContext(), R.color.MENU_ELEMENT_TEXT_PRIMARY));
                 description.setText(Utility.fromHtml("<b>" + component.getName() + "</b><br>" + component.getDescription()));
 
-                wrapper.setOnClickListener(new View.OnClickListener() {
+                wrapper.setOnClickListener(new View.OnClickListener()
+                {
                     @Override
-                    public void onClick(View v) {
+                    public void onClick(View v)
+                    {
                         Utility.vibrate();
                         Main.externallyAddedElement = component;
                         darkBackground.dismiss();
@@ -138,5 +144,4 @@ public class MenuPrefix {
         }
         Scale.scaleMenuScrollView(ScrollView, Metrics.MENU_ELEMENT_HEIGHT.getValue(), elementCounter);
     }
-
 }

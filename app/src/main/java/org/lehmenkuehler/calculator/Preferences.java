@@ -3,8 +3,8 @@ package org.lehmenkuehler.calculator;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-public class Preferences {
-
+public class Preferences
+{
     private static final SharedPreferences settings = Utility.getContext().getSharedPreferences(Utility.getContext().getResources().getString(R.string.SHARED_PREFERENCES_SETTINGS), Context.MODE_PRIVATE);
     private static final SharedPreferences log = Utility.getContext().getSharedPreferences(Utility.getContext().getResources().getString(R.string.SHARED_PREFERENCES_LOG), Context.MODE_PRIVATE);
 
@@ -38,7 +38,8 @@ public class Preferences {
     static boolean VIBRATION = settings.getBoolean("FULLSCREEN", true);
     static boolean LOCK_PORTRAIT = settings.getBoolean("LOCK_PORTRAIT", false);
 
-    static void updateValues() {
+    static void updateValues()
+    {
 
         DISPLAY_TEXT_SIZE = settings.getInt("DISPLAY_TEXT_SIZE", 100);
         KEYBOARD_WIDTH = settings.getInt("KEYBOARD_WIDTH", 1000);
@@ -71,55 +72,64 @@ public class Preferences {
         IMAGINARY_CHARACTER = settings.getString("IMAGINARY_CHARACTER", "i");
     }
 
-
-    public enum AngularMode {
+    public enum AngularMode
+    {
         RAD("RAD"),
         DEG("DEG"),
         GRAD("GRAD");
 
         String modeBarText = "";
 
-        AngularMode(String modeBarText) {
+        AngularMode(String modeBarText)
+        {
             this.modeBarText = modeBarText;
         }
 
-        public String getModeBarText() {
+        public String getModeBarText()
+        {
             return modeBarText;
         }
     }
 
-    public enum ComplexMode {
+    public enum ComplexMode
+    {
         RECT("RECT"),
         POLAR("POLAR");
 
         String modeBarText = "";
 
-        ComplexMode(String modeBarText) {
+        ComplexMode(String modeBarText)
+        {
             this.modeBarText = modeBarText;
         }
 
-        public String getModeBarText() {
+        public String getModeBarText()
+        {
             return modeBarText;
         }
     }
 
-    public enum NotationMode {
+    public enum NotationMode
+    {
         DEC(""),
         ENG("ENG"),
         SCI("SCI");
 
         String modeBarText = "";
 
-        NotationMode(String modeBarText) {
+        NotationMode(String modeBarText)
+        {
             this.modeBarText = modeBarText;
         }
 
-        public String getModeBarText() {
+        public String getModeBarText()
+        {
             return modeBarText;
         }
     }
 
-    public enum NumeralMode {
+    public enum NumeralMode
+    {
         BIN("BIN"),
         OCT("OCT"),
         DEC("DEC"),
@@ -127,16 +137,19 @@ public class Preferences {
 
         String modeBarText = "";
 
-        NumeralMode(String modeBarText) {
+        NumeralMode(String modeBarText)
+        {
             this.modeBarText = modeBarText;
         }
 
-        public String getModeBarText() {
+        public String getModeBarText()
+        {
             return modeBarText;
         }
     }
 
-    public enum OutputMode {
+    public enum OutputMode
+    {
         DECIMAL("DEC"),
         REPEATING_DECIMAL("PER"),
         SIMPLE_FRACTION("FRAC"),
@@ -144,11 +157,10 @@ public class Preferences {
 
         String modeBarText = "";
 
-        OutputMode(String modeBarText) {
+        OutputMode(String modeBarText)
+        {
             this.modeBarText = modeBarText;
         }
     }
-
-
 }
 

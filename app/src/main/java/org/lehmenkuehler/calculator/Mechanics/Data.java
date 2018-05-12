@@ -4,7 +4,8 @@ import java.math.BigDecimal;
 
 import org.lehmenkuehler.calculator.Enums.Component;
 
-class Data {
+class Data
+{
     private BigUniversal value1 = new BigUniversal();
     private BigUniversal value2 = new BigUniversal();
     private BigUniversal value3 = new BigUniversal();
@@ -18,10 +19,12 @@ class Data {
     private int variableSectionId = 0;
     private boolean isVariable = false;
 
-    Data() {
+    Data()
+    {
     }
 
-    Data(Data data) {
+    Data(Data data)
+    {
         this.value1 = data.value1;
         this.value2 = data.value2;
         this.value3 = data.value3;
@@ -35,167 +38,207 @@ class Data {
         this.isVariable = data.isVariable;
     }
 
-    void makeArgument() {
+    void makeArgument()
+    {
         isArgument = true;
     }
 
-    void declareToVariable() {
+    void declareToVariable()
+    {
         isVariable = true;
     }
 
-    boolean isVariable() {
+    boolean isVariable()
+    {
         return isVariable;
     }
 
-    void revokeVariableStatus() {
+    void revokeVariableStatus()
+    {
         isVariable = false;
     }
 
-    void declareToVariableSection() {
+    void declareToVariableSection()
+    {
         variableSection = true;
     }
 
-    boolean isVariableSectionStart() {
+    boolean isVariableSectionStart()
+    {
         return variableSection;
     }
 
-    int getVariableSectionId() {
+    int getVariableSectionId()
+    {
         return variableSectionId;
     }
 
-    void setVariableSectionId(int id) {
+    void setVariableSectionId(int id)
+    {
         variableSectionId = id;
     }
 
-    void revokeVariableSectionStatus() {
+    void revokeVariableSectionStatus()
+    {
         variableSection = false;
     }
 
-    boolean argumentStatus() {
+    boolean argumentStatus()
+    {
         return isArgument;
     }
 
-    void setValue1(BigUniversal v) {
+    void setValue1(BigUniversal v)
+    {
         value1 = v;
     }
 
-    void setValue2(BigUniversal v) {
+    void setValue2(BigUniversal v)
+    {
         value2 = v;
     }
 
-    void setValue3(BigUniversal v) {
+    void setValue3(BigUniversal v)
+    {
         value3 = v;
     }
 
-    void setValue4(BigUniversal v) {
+    void setValue4(BigUniversal v)
+    {
         value4 = v;
     }
 
-    void setValueRe(BigDecimal re) {
+    void setValueRe(BigDecimal re)
+    {
         value1.setRe(re);
     }
 
-    void setValueIm(BigDecimal im) {
+    void setValueIm(BigDecimal im)
+    {
         value1.setIm(im);
     }
 
-    void setFunction(Component comp) {
+    void setFunction(Component comp)
+    {
         function = comp;
     }
 
-    void setOperation(Component comp) {
+    void setOperation(Component comp)
+    {
         operation = comp;
     }
 
-    void setPriorityUp() {
+    void setPriorityUp()
+    {
         priority = Component.BRACKET_OPEN;
     }
 
-    void setPriorityDown() {
+    void setPriorityDown()
+    {
         priority = Component.BRACKET_CLOSE;
     }
 
-    BigUniversal getValue1() {
+    BigUniversal getValue1()
+    {
         return value1;
     }
 
-    BigUniversal getValue2() {
+    BigUniversal getValue2()
+    {
         return value2;
     }
 
-    BigUniversal getValue3() {
+    BigUniversal getValue3()
+    {
         return value3;
     }
 
-    BigUniversal getValue4() {
+    BigUniversal getValue4()
+    {
         return value4;
     }
 
-    Component getFunction() {
+    Component getFunction()
+    {
         return function;
     }
 
-    boolean operationAdd() {
+    boolean operationAdd()
+    {
         return (operation.equals(Component.OPERATOR_ADD));
     }
 
-    boolean operationSubtract() {
+    boolean operationSubtract()
+    {
         return (operation.equals(Component.OPERATOR_SUBTRACT));
     }
 
-    boolean operationMultiply() {
+    boolean operationMultiply()
+    {
         return (operation.equals(Component.OPERATOR_MULTIPLY));
     }
 
-    boolean operationDivide() {
+    boolean operationDivide()
+    {
         return (operation.equals(Component.OPERATOR_DIVIDE) || operation.equals(Component.OPERATOR_FRACTION));
     }
 
-    boolean priorityStart() {
+    boolean priorityStart()
+    {
         return (priority.equals(Component.BRACKET_OPEN));
     }
 
-    boolean priorityStop() {
+    boolean priorityStop()
+    {
         return (priority.equals(Component.BRACKET_CLOSE));
     }
 
-    boolean functionExistent() {
+    boolean functionExistent()
+    {
         return (!function.equals(Component.VOID));
     }
 
-    boolean equalsZero() {
+    boolean equalsZero()
+    {
         return (value1.getRe().equals(BigDecimal.ZERO) && value1.getIm().equals(BigDecimal.ZERO));
     }
 
-    boolean equalsPiHalf() {
+    boolean equalsPiHalf()
+    {
         return (value1.getRe().subtract(Component.CONSTANT_PI_HALF.getValue()).abs().compareTo(new BigDecimal("1E-15")) < 0);
     }
 
-    boolean isPositiveInteger() {
+    boolean isPositiveInteger()
+    {
         return (value1.isReal() && value1.getRe().remainder(BigDecimal.ONE).equals(BigDecimal.ZERO) && value1.getRe().compareTo(BigDecimal.ZERO) >= 0);
     }
 
 
-    void clearValues() {
+    void clearValues()
+    {
         value1 = new BigUniversal();
         value2 = new BigUniversal();
         value3 = new BigUniversal();
         value4 = new BigUniversal();
     }
 
-    void clearFunction() {
+    void clearFunction()
+    {
         function = Component.VOID;
     }
 
-    void clearOperation() {
+    void clearOperation()
+    {
         operation = Component.VOID;
     }
 
-    void clearPriority() {
+    void clearPriority()
+    {
         priority = Component.VOID;
     }
 
-    void clear() {
+    void clear()
+    {
         clearValues();
         clearFunction();
         clearOperation();

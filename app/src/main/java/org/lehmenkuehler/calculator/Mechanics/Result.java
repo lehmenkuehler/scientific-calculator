@@ -2,34 +2,41 @@ package org.lehmenkuehler.calculator.Mechanics;
 
 import java.math.BigDecimal;
 
-public class Result {
+public class Result
+{
     private BigUniversal value = new BigUniversal();
 
-    Result() {
+    Result()
+    {
     }
 
-    public Result(BigDecimal convertedValue) {
+    public Result(BigDecimal convertedValue)
+    {
         value = new BigUniversal(convertedValue);
     }
 
-    public BigDecimal getRe() {
+    public BigDecimal getRe()
+    {
         return value.getRe().stripTrailingZeros();
     }
 
-    public BigDecimal getIm() {
+    public BigDecimal getIm()
+    {
         return value.getIm().stripTrailingZeros();
     }
 
-    public BigDecimal getRadius() {
+    public BigDecimal getRadius()
+    {
         return value.getRadius().stripTrailingZeros();
     }
 
-    public BigDecimal getAngle() {
+    public BigDecimal getAngle()
+    {
         return value.getAngle().stripTrailingZeros();
     }
 
-    void setValue(BigUniversal value) {
+    void setValue(BigUniversal value)
+    {
         this.value = value;
     }
-
 }

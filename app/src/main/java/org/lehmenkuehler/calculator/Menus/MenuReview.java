@@ -24,8 +24,8 @@ import org.lehmenkuehler.calculator.Preferences;
 import org.lehmenkuehler.calculator.R;
 import org.lehmenkuehler.calculator.Utility;
 
-public class MenuReview {
-
+public class MenuReview
+{
     private final Context context;
 
     private final DarkBackground darkBackground;
@@ -33,14 +33,16 @@ public class MenuReview {
     private PopupWindow menu;
 
     @SuppressLint("InflateParams")
-    public MenuReview(Context c) {
+    public MenuReview(Context c)
+    {
         context = c;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         layoutMenu = inflater.inflate(R.layout.menu_1, null);
         darkBackground = new DarkBackground(context);
     }
 
-    public void initiateMenu() {
+    public void initiateMenu()
+    {
 
         TextView Headline;
         LinearLayout ContentLayout, ButtonLayout;
@@ -61,9 +63,11 @@ public class MenuReview {
         ButtonLater.setText(context.getResources().getString(R.string.MENU_BUTTON_LATER));
         ButtonLater.setTextColor(ContextCompat.getColor(Utility.getContext(), R.color.MENU_BUTTON_TEXT));
         ButtonLater.setTextSize(TypedValue.COMPLEX_UNIT_PX, Metrics.MENU_CONSTANT_DESCRIPTION_TEXT_SIZE.getValue());
-        ButtonLater.setOnClickListener(new Button.OnClickListener() {
+        ButtonLater.setOnClickListener(new Button.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 Utility.vibrate();
                 Preferences.PLEA_FOR_REVIEW = false;
                 darkBackground.dismiss();
@@ -78,9 +82,11 @@ public class MenuReview {
         ButtonNever.setText(context.getResources().getString(R.string.MENU_BUTTON_NEVER));
         ButtonNever.setTextColor(ContextCompat.getColor(Utility.getContext(), R.color.MENU_BUTTON_TEXT));
         ButtonNever.setTextSize(TypedValue.COMPLEX_UNIT_PX, Metrics.MENU_CONSTANT_DESCRIPTION_TEXT_SIZE.getValue());
-        ButtonNever.setOnClickListener(new Button.OnClickListener() {
+        ButtonNever.setOnClickListener(new Button.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 Utility.vibrate();
                 SharedPreferences log = Utility.getContext().getSharedPreferences(Utility.getContext().getResources().getString(R.string.SHARED_PREFERENCES_LOG), Context.MODE_PRIVATE);
                 SharedPreferences.Editor logEditor = log.edit();
@@ -119,9 +125,11 @@ public class MenuReview {
         ButtonOpenPlayStore.setTextColor(ContextCompat.getColor(Utility.getContext(), R.color.MENU_BUTTON_TEXT));
         ButtonOpenPlayStore.setTextSize(TypedValue.COMPLEX_UNIT_PX, (int) (Metrics.MENU_CONSTANT_DESCRIPTION_TEXT_SIZE.getValue() * 1.5));
         ButtonOpenPlayStore.setTypeface(Typeface.DEFAULT_BOLD);
-        ButtonOpenPlayStore.setOnClickListener(new View.OnClickListener() {
+        ButtonOpenPlayStore.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 darkBackground.dismiss();
                 menu.dismiss();
                 Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -129,11 +137,8 @@ public class MenuReview {
                 context.startActivity(intent);
             }
         });
-
         ContentLayout.removeAllViews();
         ContentLayout.addView(element);
         ContentLayout.addView(ButtonOpenPlayStore);
     }
-
-
 }

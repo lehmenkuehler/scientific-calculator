@@ -10,13 +10,14 @@ import android.widget.PopupWindow;
 import org.lehmenkuehler.calculator.Main;
 import org.lehmenkuehler.calculator.R;
 
-class DarkBackground {
-
+class DarkBackground
+{
     private final View view;
     private final PopupWindow popupWindow;
 
     @SuppressLint("InflateParams")
-    DarkBackground(Context c) {
+    DarkBackground(Context c)
+    {
         LayoutInflater inflater;
         inflater = (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.menu_background, null);
@@ -24,14 +25,13 @@ class DarkBackground {
         popupWindow.setAnimationStyle(R.style.MenuBackgroundAnimation);
     }
 
-
-    void initiate() {
+    void initiate()
+    {
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
     }
 
-    void dismiss() {
+    void dismiss()
+    {
         popupWindow.dismiss();
     }
-
-
 }

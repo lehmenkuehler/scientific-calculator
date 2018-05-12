@@ -20,8 +20,8 @@ import org.lehmenkuehler.calculator.R;
 import org.lehmenkuehler.calculator.Scale;
 import org.lehmenkuehler.calculator.Utility;
 
-public class MenuWelcome {
-
+public class MenuWelcome
+{
     private final Context context;
 
     private final DarkBackground darkBackground;
@@ -29,14 +29,16 @@ public class MenuWelcome {
     private PopupWindow menu;
 
     @SuppressLint("InflateParams")
-    public MenuWelcome(Context c) {
+    public MenuWelcome(Context c)
+    {
         context = c;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         layoutMenu = inflater.inflate(R.layout.menu_1, null);
         darkBackground = new DarkBackground(context);
     }
 
-    public void initiateMenu() {
+    public void initiateMenu()
+    {
 
         TextView Headline;
         LinearLayout ContentLayout, ButtonLayout;
@@ -58,9 +60,11 @@ public class MenuWelcome {
         ButtonClose.setText(context.getResources().getString(R.string.MENU_BUTTON_EXIT));
         ButtonClose.setTextColor(ContextCompat.getColor(Utility.getContext(), R.color.MENU_BUTTON_TEXT));
         ButtonClose.setTextSize(TypedValue.COMPLEX_UNIT_PX, Metrics.MENU_CONSTANT_DESCRIPTION_TEXT_SIZE.getValue());
-        ButtonClose.setOnClickListener(new Button.OnClickListener() {
+        ButtonClose.setOnClickListener(new Button.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 Utility.vibrate();
                 darkBackground.dismiss();
                 menu.dismiss();
@@ -90,6 +94,4 @@ public class MenuWelcome {
         ContentLayout.removeAllViews();
         ContentLayout.addView(element);
     }
-
-
 }

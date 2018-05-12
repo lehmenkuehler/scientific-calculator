@@ -23,8 +23,8 @@ import org.lehmenkuehler.calculator.R;
 import org.lehmenkuehler.calculator.Scale;
 import org.lehmenkuehler.calculator.Utility;
 
-public class MenuConstants {
-
+public class MenuConstants
+{
     private final Context context;
 
     private final DarkBackground darkBackground;
@@ -37,14 +37,16 @@ public class MenuConstants {
     private Button ButtonClose, ButtonReturn;
 
     @SuppressLint("InflateParams")
-    public MenuConstants(Context c) {
+    public MenuConstants(Context c)
+    {
         context = c;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         layoutMenu = inflater.inflate(R.layout.menu_1, null);
         darkBackground = new DarkBackground(context);
     }
 
-    public void initiateMenu() {
+    public void initiateMenu()
+    {
 
         menu = new PopupWindow(layoutMenu, Metrics.MENU_WIDTH.getValue(), Metrics.MENU_HEIGHT.getValue(), true);
         menu.setAnimationStyle(R.style.MenuAnimation);
@@ -61,9 +63,11 @@ public class MenuConstants {
         ButtonReturn.setText(context.getResources().getString(R.string.MENU_BUTTON_RETURN));
         ButtonReturn.setTextColor(ContextCompat.getColor(Utility.getContext(), R.color.MENU_BUTTON_TEXT));
         ButtonReturn.setTextSize(TypedValue.COMPLEX_UNIT_PX, Metrics.MENU_CONSTANT_DESCRIPTION_TEXT_SIZE.getValue());
-        ButtonReturn.setOnClickListener(new Button.OnClickListener() {
+        ButtonReturn.setOnClickListener(new Button.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 Utility.vibrate();
                 openSelectGroup();
             }
@@ -75,9 +79,11 @@ public class MenuConstants {
         ButtonClose.setText(context.getResources().getString(R.string.MENU_BUTTON_EXIT));
         ButtonClose.setTextColor(ContextCompat.getColor(Utility.getContext(), R.color.MENU_BUTTON_TEXT));
         ButtonClose.setTextSize(TypedValue.COMPLEX_UNIT_PX, Metrics.MENU_CONSTANT_DESCRIPTION_TEXT_SIZE.getValue());
-        ButtonClose.setOnClickListener(new Button.OnClickListener() {
+        ButtonClose.setOnClickListener(new Button.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 Utility.vibrate();
                 darkBackground.dismiss();
                 menu.dismiss();
@@ -91,7 +97,8 @@ public class MenuConstants {
         openSelectGroup();
     }
 
-    private void openSelectGroup() {
+    private void openSelectGroup()
+    {
 
         ContentLayout.removeAllViews();
         ButtonLayout.removeAllViews();
@@ -103,7 +110,8 @@ public class MenuConstants {
 
         ViewGroup.LayoutParams groupElementParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, Metrics.MENU_ELEMENT_HEIGHT.getValue());
 
-        for (final Component.ConstantTag tag : Component.ConstantTag.values()) {
+        for (final Component.ConstantTag tag : Component.ConstantTag.values())
+        {
 
             if (tag.ordinal() < 2) continue;
 
@@ -116,9 +124,11 @@ public class MenuConstants {
             element.setTextSize(TypedValue.COMPLEX_UNIT_PX, Metrics.MENU_CONSTANT_DESCRIPTION_TEXT_SIZE.getValue());
             element.setTextColor(ContextCompat.getColor(Utility.getContext(), R.color.MENU_ELEMENT_TEXT_PRIMARY));
             element.setTypeface(Typeface.DEFAULT_BOLD);
-            element.setOnClickListener(new View.OnClickListener() {
+            element.setOnClickListener(new View.OnClickListener()
+            {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v)
+                {
                     Utility.vibrate();
                     openGroup(tag);
                 }
@@ -127,7 +137,8 @@ public class MenuConstants {
         }
     }
 
-    private void openGroup(Component.ConstantTag tag) {
+    private void openGroup(Component.ConstantTag tag)
+    {
 
         ButtonLayout.removeAllViews();
         ContentLayout.removeAllViews();
@@ -144,8 +155,10 @@ public class MenuConstants {
         ViewGroup.LayoutParams descriptionParams = new TableRow.LayoutParams(Metrics.MENU_CONSTANTS_DESCRIPTION_WIDTH.getValue(), ViewGroup.LayoutParams.MATCH_PARENT, 0f);
         ViewGroup.LayoutParams wrapperParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, Metrics.MENU_ELEMENT_HEIGHT.getValue());
 
-        for (final Component component : Component.values()) {
-            if (component.getConstantTag() == tag) {
+        for (final Component component : Component.values())
+        {
+            if (component.getConstantTag() == tag)
+            {
 
                 elementCounter++;
 
@@ -172,9 +185,11 @@ public class MenuConstants {
                 description.setTextColor(ContextCompat.getColor(Utility.getContext(), R.color.MENU_ELEMENT_TEXT_PRIMARY));
                 description.setText(Utility.fromHtml("<b>" + component.getName() + "</b><br>" + component.getDescription()));
 
-                wrapper.setOnClickListener(new View.OnClickListener() {
+                wrapper.setOnClickListener(new View.OnClickListener()
+                {
                     @Override
-                    public void onClick(View v) {
+                    public void onClick(View v)
+                    {
                         Utility.vibrate();
                         Main.externallyAddedElement = component;
                         darkBackground.dismiss();
@@ -189,5 +204,4 @@ public class MenuConstants {
         }
         Scale.scaleMenuScrollView(ScrollView, Metrics.MENU_ELEMENT_HEIGHT.getValue(), elementCounter);
     }
-
 }

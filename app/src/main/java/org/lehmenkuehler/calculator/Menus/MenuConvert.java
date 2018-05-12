@@ -30,9 +30,8 @@ import org.lehmenkuehler.calculator.Scale;
 import org.lehmenkuehler.calculator.Shaper;
 import org.lehmenkuehler.calculator.Utility;
 
-
-public class MenuConvert {
-
+public class MenuConvert
+{
     private final Context context;
 
     private final DarkBackground darkBackground;
@@ -48,20 +47,22 @@ public class MenuConvert {
     private LinearLayout ContentLayout, ButtonLayout;
     private ScrollView ScrollView;
 
-
     @SuppressLint("InflateParams")
-    public MenuConvert(Context c) {
+    public MenuConvert(Context c)
+    {
         context = c;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         layoutMenu = inflater.inflate(R.layout.menu_1, null);
         darkBackground = new DarkBackground(context);
     }
 
-    public void setValue(BigDecimal value) {
+    public void setValue(BigDecimal value)
+    {
         result = value;
     }
 
-    public void initiatePopupWindow() {
+    public void initiatePopupWindow()
+    {
 
         popupWindow = new PopupWindow(layoutMenu, Metrics.MENU_WIDTH.getValue(), Metrics.MENU_HEIGHT.getValue(), true);
         popupWindow.setAnimationStyle(R.style.MenuAnimation);
@@ -85,9 +86,11 @@ public class MenuConvert {
         ButtonClose.setText(context.getResources().getString(R.string.MENU_BUTTON_EXIT));
         ButtonClose.setTextColor(ContextCompat.getColor(Utility.getContext(), R.color.MENU_BUTTON_TEXT));
         ButtonClose.setTextSize(TypedValue.COMPLEX_UNIT_PX, Metrics.MENU_CONSTANT_DESCRIPTION_TEXT_SIZE.getValue());
-        ButtonClose.setOnClickListener(new Button.OnClickListener() {
+        ButtonClose.setOnClickListener(new Button.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 Utility.vibrate();
                 darkBackground.dismiss();
                 popupWindow.dismiss();
@@ -101,7 +104,8 @@ public class MenuConvert {
         selectDimension();
     }
 
-    private void selectDimension() {
+    private void selectDimension()
+    {
 
         ContentLayout.removeAllViews();
         ButtonLayout.removeAllViews();
@@ -122,7 +126,8 @@ public class MenuConvert {
 
         ViewGroup.LayoutParams groupElementParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, Metrics.MENU_ELEMENT_HEIGHT.getValue());
 
-        for (final Converter.Tag tag : Converter.Tag.values()) {
+        for (final Converter.Tag tag : Converter.Tag.values())
+        {
             TextView element = new TextView(context);
             element.setId(200 + tag.ordinal());
             element.setLayoutParams(groupElementParams);
@@ -130,9 +135,11 @@ public class MenuConvert {
             element.setTypeface(Typeface.DEFAULT_BOLD);
             element.setText(tag.getName());
             element.setGravity(Gravity.CENTER);
-            element.setOnClickListener(new View.OnClickListener() {
+            element.setOnClickListener(new View.OnClickListener()
+            {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v)
+                {
                     Utility.vibrate();
                     selectUnit(tag);
                 }
@@ -142,7 +149,8 @@ public class MenuConvert {
     }
 
 
-    private void selectUnit(Converter.Tag tag) {
+    private void selectUnit(Converter.Tag tag)
+    {
 
         ButtonLayout.removeAllViews();
         ContentLayout.removeAllViews();
@@ -162,8 +170,10 @@ public class MenuConvert {
         ViewGroup.LayoutParams descriptionParams = new TableRow.LayoutParams(Metrics.MENU_CONSTANTS_DESCRIPTION_WIDTH.getValue(), ViewGroup.LayoutParams.MATCH_PARENT, 0f);
         ViewGroup.LayoutParams wrapperParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, Metrics.MENU_ELEMENT_HEIGHT.getValue());
 
-        for (final Converter unit : Converter.values()) {
-            if (unit.getTag() == tag) {
+        for (final Converter unit : Converter.values())
+        {
+            if (unit.getTag() == tag)
+            {
 
                 elementCounter++;
 
@@ -196,9 +206,11 @@ public class MenuConvert {
                 description.setTextSize(TypedValue.COMPLEX_UNIT_PX, Metrics.MENU_CONSTANT_DESCRIPTION_TEXT_SIZE.getValue());
                 description.setTextColor(ContextCompat.getColor(Utility.getContext(), R.color.MENU_ELEMENT_TEXT_PRIMARY));
 
-                wrapper.setOnClickListener(new View.OnClickListener() {
+                wrapper.setOnClickListener(new View.OnClickListener()
+                {
                     @Override
-                    public void onClick(View v) {
+                    public void onClick(View v)
+                    {
                         Utility.vibrate();
                         showResults(unit);
                     }
@@ -213,9 +225,11 @@ public class MenuConvert {
 
         Scale.scaleMenuScrollView(ScrollView, Metrics.MENU_ELEMENT_HEIGHT.getValue(), elementCounter);
 
-        ButtonReturn.setOnClickListener(new Button.OnClickListener() {
+        ButtonReturn.setOnClickListener(new Button.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 Utility.vibrate();
                 selectDimension();
             }
@@ -223,7 +237,8 @@ public class MenuConvert {
 
     }
 
-    private void showResults(final Converter unit) {
+    private void showResults(final Converter unit)
+    {
 
         ButtonLayout.removeAllViews();
         ContentLayout.removeAllViews();
@@ -243,8 +258,10 @@ public class MenuConvert {
 
         Preferences.MODE_OUTPUT = Preferences.OutputMode.DECIMAL;
 
-        for (final Converter units : Converter.values()) {
-            if (units.getTag() == unit.getTag()) {
+        for (final Converter units : Converter.values())
+        {
+            if (units.getTag() == unit.getTag())
+            {
 
                 elementCounter++;
 
@@ -278,12 +295,16 @@ public class MenuConvert {
                 description.setGravity(Gravity.CENTER_VERTICAL);
                 description.setPadding(20, 0, 0, 0);
 
-                wrapper.setOnClickListener(new View.OnClickListener() {
+                wrapper.setOnClickListener(new View.OnClickListener()
+                {
                     @Override
-                    public void onClick(View v) {
+                    public void onClick(View v)
+                    {
                         Utility.vibrate();
-                        for (ConvertedValue cV : values) {
-                            if (cV.getId() == v.getId()) {
+                        for (ConvertedValue cV : values)
+                        {
+                            if (cV.getId() == v.getId())
+                            {
                                 Main.convertedValue = cV.getValue();
                                 values = new ArrayList<>();
                                 break;
@@ -298,14 +319,15 @@ public class MenuConvert {
                 wrapper.addView(symbol);
                 wrapper.addView(description);
             }
-
         }
 
         Scale.scaleMenuScrollView(ScrollView, Metrics.MENU_ELEMENT_HEIGHT.getValue(), elementCounter);
 
-        ButtonReturn.setOnClickListener(new Button.OnClickListener() {
+        ButtonReturn.setOnClickListener(new Button.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 Utility.vibrate();
                 selectUnit(unit.getTag());
             }
@@ -313,23 +335,26 @@ public class MenuConvert {
 
     }
 
-    private class ConvertedValue {
+    private class ConvertedValue
+    {
 
         final BigDecimal value;
         final int id;
 
-        ConvertedValue(BigDecimal value, int id) {
+        ConvertedValue(BigDecimal value, int id)
+        {
             this.value = value;
             this.id = id;
         }
 
-        public int getId() {
+        public int getId()
+        {
             return id;
         }
 
-        public BigDecimal getValue() {
+        public BigDecimal getValue()
+        {
             return value;
         }
     }
-
 }

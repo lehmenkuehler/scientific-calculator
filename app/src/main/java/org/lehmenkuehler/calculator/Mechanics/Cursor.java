@@ -1,7 +1,9 @@
 package org.lehmenkuehler.calculator.Mechanics;
 
 import android.widget.EditText;
+
 import java.util.List;
+
 import org.lehmenkuehler.calculator.Enums.Component;
 
 public class Cursor
@@ -22,11 +24,13 @@ public class Cursor
         indexToReal();
     }
 
-    public int getElementPosition() {
+    public int getElementPosition()
+    {
         return elementPosition;
     }
 
-    public void updateElementList(List<Element> elementList) {
+    public void updateElementList(List<Element> elementList)
+    {
         this.elementList = elementList;
     }
 

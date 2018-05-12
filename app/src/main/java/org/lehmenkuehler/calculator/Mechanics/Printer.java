@@ -9,8 +9,8 @@ import org.lehmenkuehler.calculator.Enums.Component;
 import org.lehmenkuehler.calculator.R;
 import org.lehmenkuehler.calculator.Utility;
 
-public class Printer {
-
+public class Printer
+{
     private static final String colorFunctions = String.format("#%06X", 0xFFFFFF & ContextCompat.getColor(Utility.getContext(), R.color.DISPLAY_INPUT_FUNCTIONS));
     private static final String colorConstants = String.format("#%06X", 0xFFFFFF & ContextCompat.getColor(Utility.getContext(), R.color.DISPLAY_INPUT_CONSTANTS));
     private static final String colorFigures = String.format("#%06X", 0xFFFFFF & ContextCompat.getColor(Utility.getContext(), R.color.DISPLAY_INPUT_FIGURES));
@@ -22,32 +22,40 @@ public class Printer {
     private List<Element> script;
     private String finalOutput;
 
-    public Printer() {
+    public Printer()
+    {
     }
 
-    public List<Element> getScript() {
+    public List<Element> getScript()
+    {
         return script;
     }
 
 
-    public void setScript(List<Element> elements) {
+    public void setScript(List<Element> elements)
+    {
         script = elements;
     }
 
-    public String getFinalOutput() {
+    public String getFinalOutput()
+    {
         return finalOutput;
     }
 
-    public void printFinalOutput(EditText e) {
+    public void printFinalOutput(EditText e)
+    {
         buildFinalOutput();
         e.setText(Utility.fromHtml(finalOutput));
     }
 
-    private void buildFinalOutput() {
+    private void buildFinalOutput()
+    {
         finalOutput = "";
-        for (Element e : script) {
+        for (Element e : script)
+        {
 
-            switch (e.getOpticFeatureScript()) {
+            switch (e.getOpticFeatureScript())
+            {
                 case SUBSCRIPT_START:
                     finalOutput += "<sub>";
                     break;
@@ -61,24 +69,33 @@ public class Printer {
             if (e.getOpticFeatureSize() == Element.OpticFeatureSize.SMALL_START)
                 finalOutput += "<small>";
 
-            if (Check.isFunction(e.getComponent()) || Check.isConnectiveFunction(e.getComponent())) {
+            if (Check.isFunction(e.getComponent()) || Check.isConnectiveFunction(e.getComponent()))
+            {
                 finalOutput += "<font color=" + colorFunctions + ">" + e.getComponent().getSymbol() + "</font>";
-            } else if (Check.isBracket(e.getComponent())) {
-                if (Check.isPureBracket(e.getComponent())) {
+            } else if (Check.isBracket(e.getComponent()))
+            {
+                if (Check.isPureBracket(e.getComponent()))
+                {
                     finalOutput += "<font color=" + colorBrackets + ">" + e.getComponent().getSymbol() + "</font>";
-                }
-                else finalOutput += "<font color=" + colorFunctions + ">" + e.getComponent().getSymbol() + "</font>";
-            } else if (Check.isPhantom(e.getComponent())) {
+                } else
+                    finalOutput += "<font color=" + colorFunctions + ">" + e.getComponent().getSymbol() + "</font>";
+            } else if (Check.isPhantom(e.getComponent()))
+            {
                 finalOutput += "<font color=" + colorPhantoms + ">" + e.getComponent().getSymbol() + "</font>";
-            } else if (Check.isConstant(e.getComponent()) && e.getComponent() != Component.ANSWER) {
+            } else if (Check.isConstant(e.getComponent()) && e.getComponent() != Component.ANSWER)
+            {
                 finalOutput += "<font color=" + colorConstants + ">" + e.getComponent().getSymbol() + "</font>";
-            } else if (Check.isOperator(e.getComponent())) {
+            } else if (Check.isOperator(e.getComponent()))
+            {
                 finalOutput += "<font color=" + colorOperators + ">" + e.getComponent().getSymbol() + "</font>";
-            } else if (Check.isFigure(e.getComponent())) {
+            } else if (Check.isFigure(e.getComponent()))
+            {
                 finalOutput += "<font color=" + colorFigures + ">" + e.getComponent().getSymbol() + "</font>";
-            } else {
+            } else
+            {
                 finalOutput += "<font color=" + color + ">" + e.getComponent().getSymbol() + "</font>";
-                if (e.getComponent() == Component.ANSWER) {
+                if (e.getComponent() == Component.ANSWER)
+                {
                     String answerId = String.valueOf(e.getAnswerId());
                     if (e.getAnswerId() < 10) answerId = "0" + e.getAnswerId();
                     finalOutput += "<font color=" + color + "><sub><small>" + answerId + "</small></sub></font>";
@@ -88,7 +105,8 @@ public class Printer {
             if (e.getOpticFeatureSize() == Element.OpticFeatureSize.SMALL_STOP)
                 finalOutput += "</small>";
 
-            switch (e.getOpticFeatureScript()) {
+            switch (e.getOpticFeatureScript())
+            {
                 case SUBSCRIPT_STOP:
                     finalOutput += "</sub>";
                     break;
@@ -100,6 +118,4 @@ public class Printer {
             }
         }
     }
-
-
 }

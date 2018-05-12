@@ -8,7 +8,8 @@ import org.lehmenkuehler.calculator.Enums.Component;
 import org.lehmenkuehler.calculator.Enums.Error;
 import org.lehmenkuehler.calculator.Main;
 
-public class Engine {
+public class Engine
+{
 
     private final int precision = 100;
     private final Result result = new Result();
@@ -19,59 +20,69 @@ public class Engine {
 
     private List<List<Data>> variableSection = new ArrayList<List<Data>>();
 
-    public Engine() {
+    public Engine()
+    {
 
     }
 
 
-    public Result getResult() {
+    public Result getResult()
+    {
         return result;
     }
 
-    public void executeCalculation() {
+    public void executeCalculation()
+    {
         result.setValue(calculate(mainData));
     }
 
-    public void setData(List<Data> data) {
+    public void setData(List<Data> data)
+    {
         mainData = data;
     }
 
-    private BigUniversal calculate(List<Data> data) {
+    private BigUniversal calculate(List<Data> data)
+    {
 
         boolean standardRun = !data.get(0).isVariableSectionStart();
-
 
         // add result object
         data.add(0, new Data());
 
         // Search for Advanced functions / variable section parts
 
-        if (standardRun && true) {
+        if (standardRun && true)
+        {
             int advancedFunctionCount = 0;
             List<Integer> startPoints = new ArrayList<>();
             int index1 = 0;
-            for (Data d : data) {
-                if (Check.isAdvancedFunction(d.getFunction())) {
+            for (Data d : data)
+            {
+                if (Check.isAdvancedFunction(d.getFunction()))
+                {
                     variableSection.add(new ArrayList<Data>());
                     advancedFunctionCount++;
                     startPoints.add(index1);
                 }
                 index1++;
             }
-            while (advancedFunctionCount != 0) {
+            while (advancedFunctionCount != 0)
+            {
                 int priorityLevel = 0;
                 int start = startPoints.get(startPoints.size() - 1);
                 data.get(start).setVariableSectionId(advancedFunctionCount);
                 start++;
                 data.get(start).setVariableSectionId(advancedFunctionCount);
-                for (; ; ) {
+                for (; ; )
+                {
                     if (data.get(start).priorityStart()) priorityLevel++;
                     if (data.get(start).priorityStop()) priorityLevel--;
 
                     variableSection.get(advancedFunctionCount - 1).add(new Data(data.get(start)));
                     data.remove(start);
 
-                    if (priorityLevel == 0) {
+                    if (priorityLevel == 0)
+                    {
                         advancedFunctionCount--;
                         break;
                     }
@@ -81,7 +92,8 @@ public class Engine {
 
 
         int rounds = roundsNeeded(data);
-        for (int round = 1; round <= rounds; round++) {
+        for (int round = 1; round <= rounds; round++)
+        {
             int argumentNumber = 1;
             int start = findStart(data);
             int stop = findStop(data);
@@ -98,18 +110,24 @@ public class Engine {
                 continue;
             }*/
 
-            if (!standardRun) {
-                for (int n = start; n <= stop; n++) {
-                    if (data.get(n).isVariable()) {
+            if (!standardRun)
+            {
+                for (int n = start; n <= stop; n++)
+                {
+                    if (data.get(n).isVariable())
+                    {
                         data.get(n).setValue1(variable);
                         data.get(n).revokeVariableStatus();
                     }
                 }
             }
 
-            for (int n = start; n <= stop; n++) {
-                if (data.get(n).argumentStatus()) {
-                    switch (argumentNumber) {
+            for (int n = start; n <= stop; n++)
+            {
+                if (data.get(n).argumentStatus())
+                {
+                    switch (argumentNumber)
+                    {
                         case 1:
                             data.get(start - 1).setValue1(data.get(n).getValue1());
                             break;
@@ -128,9 +146,12 @@ public class Engine {
                 }
             }
 
-            for (int n = start; n <= stop; n++) {
-                if (data.get(n).functionExistent()) {
-                    switch (data.get(n).getFunction()) {
+            for (int n = start; n <= stop; n++)
+            {
+                if (data.get(n).functionExistent())
+                {
+                    switch (data.get(n).getFunction())
+                    {
                         case FUNCTION_SINE:
                             data.get(n).setValue1(data.get(n).getValue1().sin());
                             data.get(n).clearFunction();
@@ -248,7 +269,8 @@ public class Engine {
                         case FUNCTION_DERIVATION:
                             variable = data.get(n).getValue1().add(new BigUniversal(new BigDecimal("1E-20")));
                             List<Data> variableSectionAlternative = new ArrayList<>();
-                            for (Data d : variableSection.get(data.get(n).getVariableSectionId() - 1)) {
+                            for (Data d : variableSection.get(data.get(n).getVariableSectionId() - 1))
+                            {
                                 variableSectionAlternative.add(new Data(d));
                             }
                             BigUniversal f_of_x_plus_h = calculate(variableSection.get(data.get(n).getVariableSectionId() - 1));
@@ -269,30 +291,35 @@ public class Engine {
 
                             List<Data> tempList = new ArrayList<>();
 
-                            for (Data d : variableSection.get(data.get(n).getVariableSectionId() - 1)) {
+                            for (Data d : variableSection.get(data.get(n).getVariableSectionId() - 1))
+                            {
                                 tempList.add(new Data(d));
                             }
 
                             variable = a;
                             heightList.add(calculate(tempList));
-                            for (int i = 0; i < steps; i++) {
+                            for (int i = 0; i < steps; i++)
+                            {
                                 variable = variable.add(step);
                                 tempList.clear();
-                                for (Data d : variableSection.get(data.get(n).getVariableSectionId() - 1)) {
+                                for (Data d : variableSection.get(data.get(n).getVariableSectionId() - 1))
+                                {
                                     tempList.add(new Data(d));
                                 }
                                 heightList.add(calculate(tempList));
                             }
                             variable = data.get(n).getValue2();
                             tempList.clear();
-                            for (Data d : variableSection.get(data.get(n).getVariableSectionId() - 1)) {
+                            for (Data d : variableSection.get(data.get(n).getVariableSectionId() - 1))
+                            {
                                 tempList.add(new Data(d));
                             }
                             heightList.add(calculate(tempList));
 
                             heightList.add(new BigUniversal(BigDecimal.ZERO));
 
-                            for (int i = 0; i < steps; i++) {
+                            for (int i = 0; i < steps; i++)
+                            {
                                 res = res.add(stepHalf.multiply(heightList.get(i).add(heightList.get(i + 1))));
                             }
                             data.get(n).setValue1(res);
@@ -339,9 +366,12 @@ public class Engine {
                     }
                 }
             }
-            for (int n = start; n <= stop; n++) {
-                if (data.get(n).functionExistent()) {
-                    switch (data.get(n).getFunction()) {
+            for (int n = start; n <= stop; n++)
+            {
+                if (data.get(n).functionExistent())
+                {
+                    switch (data.get(n).getFunction())
+                    {
                         case FUNCTION_FACTORIAL_CONNECTIVE:
                             data.get(n - 1).setValue1(data.get(n - 1).getValue1().fact());
                             data.get(n).clear();
@@ -351,9 +381,11 @@ public class Engine {
                             data.get(n).clear();
                             break;
                         case FUNCTION_POW:
-                            if (data.get(n).getValue1().isReal() && data.get(n - 1).getValue1().getRe().abs().subtract(Component.CONSTANT_EULER_NUMBER.getValue()).signum() == 0) {
+                            if (data.get(n).getValue1().isReal() && data.get(n - 1).getValue1().getRe().abs().subtract(Component.CONSTANT_EULER_NUMBER.getValue()).signum() == 0)
+                            {
                                 data.get(n - 1).setValue1(data.get(n + 1).getValue1().exp());
-                            } else {
+                            } else
+                            {
                                 data.get(n - 1).setValue1(data.get(n - 1).getValue1().pow(data.get(n + 1).getValue1()));
                             }
                             data.remove(n + 1);
@@ -383,9 +415,12 @@ public class Engine {
                     }
                 }
             }
-            for (int n = stop; n >= start; n--) {
-                if (data.get(n).operationDivide()) {
-                    if (data.get(n).equalsZero()) {
+            for (int n = stop; n >= start; n--)
+            {
+                if (data.get(n).operationDivide())
+                {
+                    if (data.get(n).equalsZero())
+                    {
                         Main.globalError = Error.DIVIDE_BY_ZERO;
                         return new BigUniversal();
                     }
@@ -393,19 +428,24 @@ public class Engine {
                     data.get(n).setOperation(Component.OPERATOR_MULTIPLY);
                 }
             }
-            for (int n = stop; n >= start; n--) {
-                if (data.get(n).operationMultiply()) {
+            for (int n = stop; n >= start; n--)
+            {
+                if (data.get(n).operationMultiply())
+                {
                     data.get(n - 1).setValue1(data.get(n - 1).getValue1().multiply(data.get(n).getValue1()));
                     data.get(n).clearValues();
                     data.get(n).clearOperation();
                 }
             }
-            for (int n = start; n <= stop; n++) {
-                if (data.get(n).operationAdd()) {
+            for (int n = start; n <= stop; n++)
+            {
+                if (data.get(n).operationAdd())
+                {
                     data.get(start - 1).setValue1(data.get(start - 1).getValue1().add(data.get(n).getValue1()));
                     data.get(n).clearValues();
                     data.get(n).clearOperation();
-                } else if (data.get(n).operationSubtract()) {
+                } else if (data.get(n).operationSubtract())
+                {
                     data.get(start - 1).setValue1(data.get(start - 1).getValue1().subtract(data.get(n).getValue1()));
                     data.get(n).clearValues();
                     data.get(n).clearOperation();
@@ -413,8 +453,10 @@ public class Engine {
             }
 
 
-            if (round != rounds) {
-                for (int i = start; i <= stop + 1; i++) {
+            if (round != rounds)
+            {
+                for (int i = start; i <= stop + 1; i++)
+                {
                     data.remove(start);
                 }
             }
@@ -424,28 +466,35 @@ public class Engine {
     }
 
 
-    private int roundsNeeded(List<Data> data) {
+    private int roundsNeeded(List<Data> data)
+    {
         int n = 1;
-        for (Data d : data) {
+        for (Data d : data)
+        {
             if (d.priorityStart()) n++;
         }
         return n;
     }
 
-    private int findStart(List<Data> data) {
+    private int findStart(List<Data> data)
+    {
         int start = 0;
-        while (start < data.size() - 1 && !data.get(start).priorityStop()) {
+        while (start < data.size() - 1 && !data.get(start).priorityStop())
+        {
             start++;
         }
-        while (start > 0 && !data.get(start).priorityStart()) {
+        while (start > 0 && !data.get(start).priorityStart())
+        {
             start--;
         }
         return start + 1;
     }
 
-    private int findStop(List<Data> data) {
+    private int findStop(List<Data> data)
+    {
         int stop = 0;
-        while (stop < data.size() - 1 && !data.get(stop).priorityStop()) {
+        while (stop < data.size() - 1 && !data.get(stop).priorityStop())
+        {
             stop++;
         }
         if (data.get(stop).priorityStop()) return stop - 1;

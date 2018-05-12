@@ -1,5 +1,6 @@
 package org.lehmenkuehler.calculator;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -53,7 +54,8 @@ import org.lehmenkuehler.calculator.Menus.MenuReview;
 import org.lehmenkuehler.calculator.Menus.MenuWelcome;
 
 
-public class Main extends Activity implements View.OnClickListener, View.OnLongClickListener {
+public class Main extends Activity implements View.OnClickListener, View.OnLongClickListener
+{
 
     public static Component externallyAddedElement = Component.VOID;
     public static int answerId = 0;
@@ -183,8 +185,10 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
     private TextView barStructure;
     private TextView barNotation;
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -193,7 +197,8 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
 
         context = this;
 
-        if (Preferences.LOCK_PORTRAIT) {
+        if (Preferences.LOCK_PORTRAIT)
+        {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
 
@@ -437,11 +442,14 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
         logEditor.putInt("USAGE_COUNTER", Preferences.USAGE_COUNTER + 1);
         logEditor.apply();
 
-        if ((Preferences.USAGE_COUNTER % 10 == 0 && Preferences.PLEA_FOR_REVIEW) || Preferences.USAGE_COUNTER == 150) {
+        if ((Preferences.USAGE_COUNTER % 10 == 0 && Preferences.PLEA_FOR_REVIEW) || Preferences.USAGE_COUNTER == 150)
+        {
             final Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
+            handler.postDelayed(new Runnable()
+            {
                 @Override
-                public void run() {
+                public void run()
+                {
                     MenuReview menuReview = new MenuReview(context);
                     menuReview.initiateMenu();
                 }
@@ -449,20 +457,25 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
         }
 
 
-        displayInput.setOnTouchListener(new OnTouchListener() {
+        displayInput.setOnTouchListener(new OnTouchListener()
+        {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
+            public boolean onTouch(View v, MotionEvent event)
+            {
                 v.onTouchEvent(event);
                 final Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
+                handler.postDelayed(new Runnable()
+                {
                     @Override
-                    public void run() {
+                    public void run()
+                    {
                         cursorManager.synchronizeAfterTouch(displayInput.getSelectionStart());
                         cursorManager.updateCursor(displayInput);
                     }
                 }, 300);
                 InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                if (imm != null) {
+                if (imm != null)
+                {
                     imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                 }
                 return true;
@@ -470,10 +483,13 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
         });
 
         final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
+        handler.postDelayed(new Runnable()
+        {
             @Override
-            public void run() {
-                if (Preferences.WELCOMING_MESSAGE) {
+            public void run()
+            {
+                if (Preferences.WELCOMING_MESSAGE)
+                {
                     MenuWelcome menuWelcome = new MenuWelcome(context);
                     menuWelcome.initiateMenu();
 
@@ -489,10 +505,13 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
 
-        if (requestCode == 1) {
-            if (resultCode == Activity.RESULT_CANCELED) {
+        if (requestCode == 1)
+        {
+            if (resultCode == Activity.RESULT_CANCELED)
+            {
                 Intent intent = getIntent();
                 finish();
                 startActivity(intent);
@@ -501,17 +520,20 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
     }
 
     @Override
-    public boolean onLongClick(View view) {
+    public boolean onLongClick(View view)
+    {
         shift = true;
         view.performClick();
         return true;
     }
 
     @Override
-    public void onClick(View view) {
+    public void onClick(View view)
+    {
         Utility.vibrate();
         inputId++;
-        switch (view.getId()) {
+        switch (view.getId())
+        {
             case R.id.ButtonZero:
                 if (!shift) apply(Component.FIGURE_ZERO);
                 break;
@@ -601,12 +623,14 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
                     apply(Component.FUNCTION_HYPERBOLIC_AREATANGENT);
                 break;
             case R.id.ButtonSquare:
-                if (!shift) {
+                if (!shift)
+                {
                     apply(Component.FUNCTION_POW, Component.FIGURE_TWO);
                     cursorManager.cursorPositionForward();
                     cursorManager.updateCursor(displayInput);
                 }
-                if (shift) {
+                if (shift)
+                {
                     apply(Component.FUNCTION_POW, Component.FIGURE_THREE);
                     cursorManager.cursorPositionForward();
                     cursorManager.updateCursor(displayInput);
@@ -617,14 +641,16 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
                 if (shift) apply(Component.FUNCTION_CUBIC_ROOT);
                 break;
             case R.id.ButtonPower:
-                if (!shift) {
+                if (!shift)
+                {
                     apply(Component.FUNCTION_POW);
                 }
                 if (shift) apply(Component.FUNCTION_NTH_ROOT);
                 break;
             case R.id.ButtonNaturalLogarithm:
                 if (!shift) apply(Component.FUNCTION_NATURAL_LOGARITHM);
-                if (shift) {
+                if (shift)
+                {
                     apply(Component.CONSTANT_EULER_NUMBER);
                     inputId++;
                     apply(Component.FUNCTION_POW);
@@ -658,7 +684,8 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
                 else apply(Component.FUNCTION_RANDOM_INTEGER);
                 break;
             case R.id.ButtonDecimalPower:
-                if (!shift) {
+                if (!shift)
+                {
                     apply(Component.OPERATOR_MULTIPLY);
                     inputId++;
                     apply(Component.FIGURE_ONE);
@@ -666,11 +693,15 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
                     apply(Component.FIGURE_ZERO);
                     inputId++;
                     apply(Component.FUNCTION_POW);
-                } else {
+                } else
+                {
                     mPref.initiateMenu();
-                    mPref.menu.setOnDismissListener(new PopupWindow.OnDismissListener() {
-                        public void onDismiss() {
-                            if (externallyAddedElement != Component.VOID) {
+                    mPref.menu.setOnDismissListener(new PopupWindow.OnDismissListener()
+                    {
+                        public void onDismiss()
+                        {
+                            if (externallyAddedElement != Component.VOID)
+                            {
                                 apply(externallyAddedElement);
                                 externallyAddedElement = Component.VOID;
                             }
@@ -680,8 +711,10 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
                 clearModes();
                 break;
             case R.id.ButtonToggleSign:
-                if (!shift) {
-                    if (parseManager.getComponent(cursorManager.getElementPosition() - 1).equals(Component.NEGATIVE_SIGN)) {
+                if (!shift)
+                {
+                    if (parseManager.getComponent(cursorManager.getElementPosition() - 1).equals(Component.NEGATIVE_SIGN))
+                    {
                         cursorManager.cursorPositionBackward();
                         cursorManager.updateCursor(displayInput);
                         parseManager.removeElement(cursorManager.getElementPosition());
@@ -700,21 +733,26 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
                 else hyperbolicOff();
                 break;
             case R.id.ButtonEnter:
-                if (!shift) {
-                    try {
+                if (!shift)
+                {
+                    try
+                    {
                         Calculation.setData(parseManager.getData());
                         Calculation.executeCalculation();
-                        if (globalError == Error.VOID) {
+                        if (globalError == Error.VOID)
+                        {
                             printResult();
                         } else displayOutput.setText(globalError.getMessage());
 
-                    } catch (Exception e) {
+                    } catch (Exception e)
+                    {
                         displayOutput.setText(globalError.getMessage());
                     }
                     displayInput.setEnabled(false);
                     historyManager.addToHistory(printManager.getFinalOutput(), Shaper.getFinalOutput(Calculation.getResult(), Preferences.MODE_NOTATION, Preferences.MODE_NOTATION_ALTERNATIVE), Calculation.getResult());
                     executed = true;
-                } else {
+                } else
+                {
                     answerId = History.getNumberOfElements();
                     apply(Component.ANSWER_LAST);
                 }
@@ -736,8 +774,10 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
                 break;
             case R.id.ButtonMode:
                 mMode.initiatePopupWindow();
-                mMode.popupMode.setOnDismissListener(new PopupWindow.OnDismissListener() {
-                    public void onDismiss() {
+                mMode.popupMode.setOnDismissListener(new PopupWindow.OnDismissListener()
+                {
+                    public void onDismiss()
+                    {
                         setModeBarText();
                         if (!displayOutput.getText().equals(""))
                             displayOutput.setText(Utility.fromHtml(Shaper.getFinalOutput(Calculation.getResult(), Preferences.MODE_NOTATION, Preferences.MODE_NOTATION_ALTERNATIVE)));
@@ -748,17 +788,22 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
                 if (!displayOutput.getText().equals("")) toggleFraction();
                 break;
             case R.id.ButtonConstants:
-                if (!shift) {
+                if (!shift)
+                {
                     mConst.initiateMenu();
-                    mConst.menu.setOnDismissListener(new PopupWindow.OnDismissListener() {
-                        public void onDismiss() {
-                            if (externallyAddedElement != Component.VOID) {
+                    mConst.menu.setOnDismissListener(new PopupWindow.OnDismissListener()
+                    {
+                        public void onDismiss()
+                        {
+                            if (externallyAddedElement != Component.VOID)
+                            {
                                 apply(externallyAddedElement);
                                 externallyAddedElement = Component.VOID;
                             }
                         }
                     });
-                } else {
+                } else
+                {
 
                     // find to be converted value
                     final int[] startAndStop = parseManager.findConversionRange(cursorManager.getElementPosition());
@@ -767,9 +812,12 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
 
                     mConv.setValue(value);
                     mConv.initiatePopupWindow();
-                    mConv.popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
-                        public void onDismiss() {
-                            if (convertedValue != null) {
+                    mConv.popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener()
+                    {
+                        public void onDismiss()
+                        {
+                            if (convertedValue != null)
+                            {
                                 replaceWithConversion(convertedValue, startAndStop);
                                 convertedValue = null;
                             }
@@ -780,9 +828,12 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
                 break;
             case R.id.ButtonFunctions:
                 mFunc.initiateMenu();
-                mFunc.menu.setOnDismissListener(new PopupWindow.OnDismissListener() {
-                    public void onDismiss() {
-                        if (externallyAddedElement != Component.VOID) {
+                mFunc.menu.setOnDismissListener(new PopupWindow.OnDismissListener()
+                {
+                    public void onDismiss()
+                    {
+                        if (externallyAddedElement != Component.VOID)
+                        {
                             apply(externallyAddedElement);
                             externallyAddedElement = Component.VOID;
                         }
@@ -791,11 +842,15 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
                 clearModes();
                 break;
             case R.id.ButtonHistory:
-                if (!shift) {
+                if (!shift)
+                {
                     mHist.initiateMenu();
-                    mHist.menu.setOnDismissListener(new PopupWindow.OnDismissListener() {
-                        public void onDismiss() {
-                            if (externallyAddedElement != Component.VOID) {
+                    mHist.menu.setOnDismissListener(new PopupWindow.OnDismissListener()
+                    {
+                        public void onDismiss()
+                        {
+                            if (externallyAddedElement != Component.VOID)
+                            {
                                 apply(externallyAddedElement);
                                 externallyAddedElement = Component.VOID;
                             }
@@ -813,36 +868,44 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
         }
     }
 
-    private void shiftOn() {
-        if (shift) {
+    private void shiftOn()
+    {
+        if (shift)
+        {
             shift = false;
             barFunction.setText("");
-        } else {
+        } else
+        {
             alpha = false;
             shift = true;
             barFunction.setText("2nd");
         }
     }
 
-    private void alphaOn() {
-        if (alpha) {
+    private void alphaOn()
+    {
+        if (alpha)
+        {
             alpha = false;
             barFunction.setText("");
-        } else {
+        } else
+        {
             shift = false;
             alpha = true;
             barFunction.setText("3rd");
         }
     }
 
-    private void clearModes() {
+    private void clearModes()
+    {
         alpha = false;
         shift = false;
         hyperbolicOff();
         barFunction.setText("");
     }
 
-    private void hyperbolicOn() {
+    private void hyperbolicOn()
+    {
         Color.labelButton(ButtonSine, "sinh");
         Color.labelTextView(TextViewSine, "arsinh");
         Color.labelButton(ButtonCosine, "cosh");
@@ -852,7 +915,8 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
         hyperbolic = true;
     }
 
-    private void hyperbolicOff() {
+    private void hyperbolicOff()
+    {
         Color.labelButton(ButtonSine, "sin");
         Color.labelTextView(TextViewSine, "arcsin");
         Color.labelButton(ButtonCosine, "cos");
@@ -862,25 +926,32 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
         hyperbolic = false;
     }
 
-    private void apply(Component... component) {
+    private void apply(Component... component)
+    {
 
         if (executed) clear();
 
-        if (Check.isOperator(component[0]) && cursorManager.getElementPosition() == 0 && component[0] != Component.OPERATOR_FRACTION) {
+        if (Check.isOperator(component[0]) && cursorManager.getElementPosition() == 0 && component[0] != Component.OPERATOR_FRACTION)
+        {
             answerId = History.getNumberOfElements();
             apply(Component.ANSWER_LAST);
         }
 
-        if (InputControl.validSubmission(component[0], parseManager.getComponent(cursorManager.getElementPosition() - 1))) {
+        if (InputControl.validSubmission(component[0], parseManager.getComponent(cursorManager.getElementPosition() - 1)))
+        {
 
-            for (Component c : component) {
-                if (c == Component.FUNCTION_POW) {
+            for (Component c : component)
+            {
+                if (c == Component.FUNCTION_POW)
+                {
                     completeExponentialFunction();
                     inputId++;
-                } else if (c == Component.OPERATOR_FRACTION) {
+                } else if (c == Component.OPERATOR_FRACTION)
+                {
                     createFraction();
                     inputId++;
-                } else {
+                } else
+                {
 
                     Element element = new Element(c, inputId);
                     if (c == Component.ANSWER || c == Component.ANSWER_LAST)
@@ -893,7 +964,8 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
                     cursorManager.updateElementList(printManager.getScript());
                     cursorManager.cursorPositionOneForward();
 
-                    if (Check.isFunction(c) || Check.isAdvancedFunction(c)) {
+                    if (Check.isFunction(c) || Check.isAdvancedFunction(c))
+                    {
                         completeFunction(c);
                         cursorManager.setElementPositionManually(parseManager.getPreviousFunctionIndex(cursorManager.getElementPosition()) + 1);
                     }
@@ -908,21 +980,26 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
     }
 
 
-    private void performInterimCalculation() {
-        if (Preferences.INTERIM_RESULTS) {
-            try {
+    private void performInterimCalculation()
+    {
+        if (Preferences.INTERIM_RESULTS)
+        {
+            try
+            {
                 Calculation.setData(parseManager.getData());
                 Calculation.executeCalculation();
                 printResult();
                 if (displayInput.getText().length() == 0) clear();
-            } catch (Exception e) {
+            } catch (Exception e)
+            {
                 displayOutput.setText(null);
             }
             globalError = Error.VOID;
         }
     }
 
-    private void createFraction() {
+    private void createFraction()
+    {
 
         // declare position as it remains untouched from outside
         int pos = cursorManager.getElementPosition();
@@ -990,7 +1067,8 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
     /**
      * Removes the object before the cursor.
      */
-    private void backspace() {
+    private void backspace()
+    {
 
         // set position of the element that is to be removed, return if pos is zero
         int pos = cursorManager.getElementPosition();
@@ -1000,12 +1078,13 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
         cursorManager.cursorPositionBackward();
 
         /*
-        * Special case: Fractions
-        * Check for opening fraction bracket and the fraction component before it.
-        *
-        *
+         * Special case: Fractions
+         * Check for opening fraction bracket and the fraction component before it.
+         *
+         *
          */
-        if (pos > 0 && parseManager.getComponent(pos) == Component.BRACKET_OPEN_FRACTION2) {
+        if (pos > 0 && parseManager.getComponent(pos) == Component.BRACKET_OPEN_FRACTION2)
+        {
             pos--;
 
             boolean emptyNumerator = parseManager.emptyNumerator(pos);
@@ -1013,11 +1092,12 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
             else cursorManager.setElementPositionManually(pos - 2);
         }
 
-                /*
-        * Special case: Exponent
-        * Cursor needs to be incremented by one if an exponent is deleted.
+        /*
+         * Special case: Exponent
+         * Cursor needs to be incremented by one if an exponent is deleted.
          */
-        if (pos > 0 && parseManager.getComponent(pos) == Component.FUNCTION_POW) {
+        if (pos > 0 && parseManager.getComponent(pos) == Component.FUNCTION_POW)
+        {
             parseManager.removeElement(pos);
             cursorManager.cursorPositionForward();
         } else parseManager.removeElement(pos); // default case
@@ -1027,7 +1107,8 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
         cursorManager.updateCursor(displayInput);
     }
 
-    private void completeFunction(Component comp) {
+    private void completeFunction(Component comp)
+    {
 
         // skip to the previous function's phantom
         printManager.setScript(parseManager.getScript());
@@ -1037,20 +1118,23 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
         int phantomListSize = phantomList.size();
 
         // loop through the function's phantom list
-        for (int i = 0; i < comp.getPhantom().size(); i++) {
+        for (int i = 0; i < comp.getPhantom().size(); i++)
+        {
 
             // insert phantom by index
             apply(phantomList.get(i));
 
             // insert comma if there are phantoms to come
-            if (i < phantomListSize - 1) {
+            if (i < phantomListSize - 1)
+            {
                 apply(Component.SEPARATOR_COMMA);
             }
         }
         apply(Component.BRACKET_CLOSE_FUNCTION);
     }
 
-    private void completeExponentialFunction() {
+    private void completeExponentialFunction()
+    {
         Element element1 = new Element(Component.FUNCTION_POW, inputId, Element.OpticFeatureScript.SUPERSCRIPT_START, Element.OpticFeatureSize.SMALL_START);
         parseManager.insertElement(element1, cursorManager.getElementPosition());
         printManager.setScript(parseManager.getScript());
@@ -1075,18 +1159,22 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
         cursorManager.cursorPositionBackward();
     }
 
-    private void toggleFraction() {
-        if (parseManager.getScript().size() != 0) {
+    private void toggleFraction()
+    {
+        if (parseManager.getScript().size() != 0)
+        {
             Fractions.toggleOutput();
             printResult();
-        } else {
+        } else
+        {
             Toast toast = Toast.makeText(this, getResources().getString(R.string.TOAST_TOGGLE_OUTPUT_ERROR1), Toast.LENGTH_SHORT);
             toast.show();
         }
 
     }
 
-    private void clear() {
+    private void clear()
+    {
         Calculation = new Engine();
         parseManager = new Parser();
         printManager = new Printer();
@@ -1100,24 +1188,29 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
         executed = false;
     }
 
-    private void printResult() {
+    private void printResult()
+    {
         String output = Shaper.getFinalOutput(Calculation.getResult(), Preferences.MODE_NOTATION, Preferences.MODE_NOTATION_ALTERNATIVE);
-        if (output.contains("ERROR")) {
+        if (output.contains("ERROR"))
+        {
             toggleFraction();
-        }
-        else displayOutput.setText(Utility.fromHtml(output));
+        } else displayOutput.setText(Utility.fromHtml(output));
     }
 
-    private void setScale() {
+    private void setScale()
+    {
 
         ArrayList<View> keys = childrenArray(linearLayoutKeyboard);
         ArrayList<View> modi = childrenArray(LinearLayoutModes);
 
         Scale.everything(relativeLayout);
 
-        for (View child : keys) {
-            if (child.getTag() != null) {
-                switch (child.getTag().toString()) {
+        for (View child : keys)
+        {
+            if (child.getTag() != null)
+            {
+                switch (child.getTag().toString())
+                {
                     case "bigButton":
                         Scale.largeButton((Button) child);
                         child.setOnClickListener(this);
@@ -1142,7 +1235,8 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
             }
         }
 
-        for (View child : modi) {
+        for (View child : modi)
+        {
             if (child instanceof TextView) Scale.modeDisplay((TextView) child);
         }
 
@@ -1152,20 +1246,24 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
 
         // COMPENSATE FOR ROUNDING
 
-        if (screenWidth > screenHeight) {
+        if (screenWidth > screenHeight)
+        {
             barAngularMode.getLayoutParams().width = screenWidth
                     - Metrics.PADDING_SIDES.getValue() * 2
                     - Metrics.DISPLAY_MARGIN_SIDES.getValue() * 2
                     - (Metrics.TEXTVIEW_MODE_COUNT.getValue() - 1) * Metrics.TEXTVIEW_MODE_WIDTH.getValue();
-        } else {
+        } else
+        {
             barAngularMode.getLayoutParams().width = Metrics.SCREEN_WIDTH.getValue()
                     - Metrics.DISPLAY_MARGIN_SIDES.getValue() * 2
                     - (Metrics.TEXTVIEW_MODE_COUNT.getValue() - 1) * Metrics.TEXTVIEW_MODE_WIDTH.getValue();
         }
     }
 
-    private ArrayList<View> childrenArray(View v) {
-        if (!(v instanceof ViewGroup)) {
+    private ArrayList<View> childrenArray(View v)
+    {
+        if (!(v instanceof ViewGroup))
+        {
             ArrayList<View> viewArrayList = new ArrayList<>();
             viewArrayList.add(v);
             return viewArrayList;
@@ -1174,7 +1272,8 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
         ArrayList<View> result = new ArrayList<>();
 
         ViewGroup vg = (ViewGroup) v;
-        for (int i = 0; i < vg.getChildCount(); i++) {
+        for (int i = 0; i < vg.getChildCount(); i++)
+        {
             View child = vg.getChildAt(i);
             ArrayList<View> viewArrayList = new ArrayList<>();
             viewArrayList.add(v);
@@ -1185,11 +1284,14 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
         return result;
     }
 
-    void computeScreenMetrics() {
+    void computeScreenMetrics()
+    {
         int statusBarHeight = 0;
-        if (!Preferences.FULLSCREEN) {
+        if (!Preferences.FULLSCREEN)
+        {
             int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
-            if (resourceId > 0) {
+            if (resourceId > 0)
+            {
                 statusBarHeight = getResources().getDimensionPixelSize(resourceId);
             }
         }
@@ -1202,40 +1304,50 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
         screenHeight = displayMetrics.heightPixels - statusBarHeight;
     }
 
-    void toggleFullScreen() {
-        if (Preferences.FULLSCREEN) {
+    void toggleFullScreen()
+    {
+        if (Preferences.FULLSCREEN)
+        {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
-        } else {
+        } else
+        {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
     }
 
-    private void setModeBarText() {
+    private void setModeBarText()
+    {
         barAngularMode.setText(Preferences.MODE_ANGULAR.getModeBarText());
         barNumeralMode.setText(Preferences.MODE_NUMERAL.getModeBarText());
         barStructure.setText(Preferences.MODE_COMPLEX.getModeBarText());
         barNotation.setText(Preferences.MODE_NOTATION.getModeBarText());
     }
 
-    private BigDecimal findConversion(int[] startAndStop) {
+    private BigDecimal findConversion(int[] startAndStop)
+    {
         if (startAndStop.length == 0) return BigDecimal.ZERO;
         else if (startAndStop[0] == startAndStop[1])
             return new BigDecimal(parseManager.getComponent(startAndStop[0]).getSymbol());
-        else {
+        else
+        {
             String val = "";
-            for (int i = startAndStop[0]; i <= startAndStop[1]; i++) {
+            for (int i = startAndStop[0]; i <= startAndStop[1]; i++)
+            {
                 val += parseManager.getComponent(i).getSymbol();
             }
             return new BigDecimal(val);
         }
     }
 
-    private void replaceWithConversion(BigDecimal value, int[] startAndStop) {
-        if (startAndStop.length == 2) {
+    private void replaceWithConversion(BigDecimal value, int[] startAndStop)
+    {
+        if (startAndStop.length == 2)
+        {
             cursorManager.setElementPositionManually(startAndStop[1] + 1);
-            for (int i = 0; i < startAndStop[1] - startAndStop[0]; i++) {
+            for (int i = 0; i < startAndStop[1] - startAndStop[0]; i++)
+            {
                 backspace();
             }
         }
@@ -1247,13 +1359,16 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
         boolean engineeringString = false;
         String s;
         value = value.round(new MathContext(14, RoundingMode.HALF_UP)).stripTrailingZeros();
-        if (value.compareTo(new BigDecimal("1E-5")) < 0 || value.compareTo(new BigDecimal("1E5")) > 0) {
+        if (value.compareTo(new BigDecimal("1E-5")) < 0 || value.compareTo(new BigDecimal("1E5")) > 0)
+        {
             s = value.toEngineeringString();
             engineeringString = true;
         } else s = value.toPlainString();
 
-        for (int i = 0; i < s.length() && s.charAt(i) != 'E'; i++) {
-            switch (s.charAt(i)) {
+        for (int i = 0; i < s.length() && s.charAt(i) != 'E'; i++)
+        {
+            switch (s.charAt(i))
+            {
                 case '0':
                     apply(Component.FIGURE_ZERO);
                     break;
@@ -1293,15 +1408,19 @@ public class Main extends Activity implements View.OnClickListener, View.OnLongC
         }
 
         // possible second run
-        if (engineeringString) {
+        if (engineeringString)
+        {
             apply(Component.OPERATOR_MULTIPLY, Component.FIGURE_ONE, Component.FIGURE_ZERO, Component.FUNCTION_POW);
             int index = s.indexOf("E") + 1;
-            if (s.charAt(index) == '-') {
+            if (s.charAt(index) == '-')
+            {
                 apply(Component.NEGATIVE_SIGN);
                 index++;
             }
-            for (int i = index; i < s.length(); i++) {
-                switch (s.charAt(i)) {
+            for (int i = index; i < s.length(); i++)
+            {
+                switch (s.charAt(i))
+                {
                     case '0':
                         apply(Component.FIGURE_ZERO);
                         break;

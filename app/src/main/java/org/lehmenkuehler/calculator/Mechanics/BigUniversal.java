@@ -185,28 +185,47 @@ class BigUniversal {
     }
 
     BigUniversal arcsin() {
-        if (isReal()) {
+        if (isReal() && a.abs().compareTo(BigDecimal.ONE) < 0) {
             BigUniversal interim = new BigUniversal(Maths.arcsin(a), BigDecimal.ZERO);
             interim.setRe(Maths.convAM(interim.getRe(), Preferences.AngularMode.RAD, Preferences.MODE_ANGULAR));
             return interim;
         } else {
-            BigDecimal root = Maths.sqrt((a.pow(2).add(b.pow(2)).subtract(BigDecimal.ONE)).pow(2).add(new BigDecimal("4").multiply(b.pow(2))));
-            BigDecimal binominal = a.pow(2).add(b.pow(2));
-            BigDecimal re = Maths.sgn(a).multiply(new BigDecimal("0.5")).multiply(Maths.arccos(root.subtract(binominal)));
-            BigDecimal im = Maths.sgn(b).multiply(new BigDecimal("0.5")).multiply(Maths.arcosh(root.add(binominal)));
-            re = Maths.convAM(re, Preferences.AngularMode.RAD, Preferences.MODE_ANGULAR);
-            im = Maths.convAM(im, Preferences.AngularMode.RAD, Preferences.MODE_ANGULAR);
-            return new BigUniversal(re, im);
+            if (isReal())
+            {
+                BigUniversal interim = new BigUniversal(BigDecimal.ZERO, a);
+                interim = interim.add(new BigUniversal(BigDecimal.ONE.subtract(a.pow(2))).sqrt());
+                return interim.ln().multiply(new BigUniversal(BigDecimal.ZERO, BigDecimal.ONE));
+            }
+            else
+            {
+                BigDecimal root = Maths.sqrt((a.pow(2).add(b.pow(2)).subtract(BigDecimal.ONE)).pow(2).add(new BigDecimal("4").multiply(b.pow(2))));
+                BigDecimal binominal = a.pow(2).add(b.pow(2));
+                BigDecimal re = Maths.sgn(a).multiply(new BigDecimal("0.5")).multiply(Maths.arccos(root.subtract(binominal)));
+                BigDecimal im = Maths.sgn(b).multiply(new BigDecimal("0.5")).multiply(Maths.arcosh(root.add(binominal)));
+                re = Maths.convAM(re, Preferences.AngularMode.RAD, Preferences.MODE_ANGULAR);
+                im = Maths.convAM(im, Preferences.AngularMode.RAD, Preferences.MODE_ANGULAR);
+                return new BigUniversal(re, im);
+            }
+
         }
     }
 
     BigUniversal arccos() {
-        if (isReal()) {
+        if (isReal() && a.abs().compareTo(BigDecimal.ONE) < 0)
+        {
             BigUniversal interim = new BigUniversal(Maths.arccos(a), BigDecimal.ZERO);
             interim.setRe(Maths.convAM(interim.getRe(), Preferences.AngularMode.RAD, Preferences.MODE_ANGULAR));
             return interim;
-        } else {
-            return new BigUniversal(Component.CONSTANT_PI_HALF.getValue()).subtract(new BigUniversal(a, b).arcsin());
+        }
+        else
+        {
+            if (isReal())
+            {
+                BigUniversal interim = new BigUniversal(BigDecimal.ZERO, a);
+                interim = interim.add(new BigUniversal(BigDecimal.ONE.subtract(a.pow(2))).sqrt());
+                interim = interim.ln().multiply(new BigUniversal(BigDecimal.ZERO, BigDecimal.ONE));
+                return interim.add(new BigUniversal(Component.CONSTANT_PI_HALF.getValue()));
+            } else return new BigUniversal(Component.CONSTANT_PI_HALF.getValue()).subtract(new BigUniversal(a, b).arcsin());
         }
     }
 

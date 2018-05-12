@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -17,6 +18,7 @@ import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.text.Html;
 
 public class SettingsActivity extends Activity implements View.OnClickListener
 {
@@ -34,6 +36,19 @@ public class SettingsActivity extends Activity implements View.OnClickListener
 
         if (Preferences.FULLSCREEN)
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        // GITHUB LOGO
+
+        TextView TextViewGitHub = (TextView) findViewById(R.id.TextViewGitHub);
+        TextViewGitHub.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Intent browser= new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/lndrlhmnkhlr/scientific-calculator"));
+                startActivity(browser);
+            }
+        });
 
         // INTERIM RESULTS
         Switch SwitchInterimResults = (Switch) findViewById(R.id.SwitchInterimResults);

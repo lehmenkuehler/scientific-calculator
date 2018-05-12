@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_settings"
     android:layout_width="match_parent"
@@ -21,6 +22,85 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="#f5f5f5"
+                android:orientation="horizontal"
+                android:padding="3pt"
+                android:paddingRight="3pt">
+
+                <ImageView
+                    android:id="@+id/imageViewIcon"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="0"
+                    android:src="@drawable/icon" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/TextViewCopyright"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="left"
+                        android:text="@string/settings_copyright"
+                        android:textColor="@color/DISPLAY_INPUT_CONSTANTS"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/TextViewVersion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="left"
+                        android:text="@string/settings_version"
+                        android:textColor="@color/DISPLAY_INPUT_CONSTANTS"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="#f5f5f5"
+                android:gravity="left|center"
+                android:orientation="horizontal"
+                android:padding="3pt"
+                android:paddingRight="3pt">
+
+                <ImageView
+                    android:id="@+id/imageViewGitHub"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:alpha="0.8"
+                    android:src="@drawable/github_icon" />
+
+                <TextView
+                    android:id="@+id/TextViewGitHub"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="5dp"
+                    android:autoLink="web"
+                    android:gravity="center"
+                    android:text="@string/settings_github_link"
+                    android:textColor="@color/DISPLAY_INPUT_CONSTANTS"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -31,6 +111,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
+                android:layout_marginBottom="7dp"
                 android:background="@android:color/darker_gray" />
 
             <LinearLayout
@@ -120,6 +201,7 @@
 
             <View
                 android:layout_width="match_parent"
+                android:layout_marginBottom="7dp"
                 android:layout_height="1dp"
                 android:background="@android:color/darker_gray" />
 
@@ -237,36 +319,43 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
+                android:layout_marginBottom="7dp"
                 android:background="@android:color/darker_gray" />
 
             <LinearLayout
                 android:id="@+id/ElementAngularMode"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="55dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/ButtonAlternativeModeOff"
-                    android:layout_width="70dp"
-                    android:layout_height="50dp"
-                    android:layout_marginRight="20dp"
-                    android:text="off"
+                    android:layout_width="55dp"
+                    android:layout_height="45dp"
+                    android:layout_marginRight="15dp"
+                    android:alpha="0.5"
+                    android:text="OFF"
+                    android:textSize="12sp"
                     tools:ignore="ButtonStyle,HardcodedText" />
 
                 <Button
                     android:id="@+id/ButtonAlternativeModeSCI"
-                    android:layout_width="70dp"
-                    android:layout_height="50dp"
+                    android:layout_width="55dp"
+                    android:layout_height="45dp"
+                    android:alpha="0.5"
                     android:text="SCI"
+                    android:textSize="12sp"
                     tools:ignore="ButtonStyle,HardcodedText" />
 
                 <Button
                     android:id="@+id/ButtonAlternativeModeENG"
-                    android:layout_width="70dp"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_width="55dp"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="15dp"
+                    android:alpha="0.5"
                     android:text="ENG"
+                    android:textSize="12sp"
                     tools:ignore="ButtonStyle,HardcodedText" />
 
             </LinearLayout>
@@ -310,6 +399,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
+                android:layout_marginBottom="7dp"
                 android:background="@android:color/darker_gray" />
 
             <TextView
@@ -401,22 +491,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_weight="1"
-                android:text="@string/SETTINGS_HEADLINE_ABOUT"
+                android:text="@string/SETTINGS_HEADLINE_OTHER"
                 android:textAllCaps="true" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
+                android:layout_marginBottom="7dp"
                 android:background="@android:color/darker_gray" />
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingBottom="10dp"
-                android:paddingTop="10dp"
-                android:text="Version 1.0" />
 
             <Button
                 android:id="@+id/ButtonContact"
@@ -425,10 +507,12 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
-                android:background="@drawable/menu_button"
+                android:background="#ededed"
                 android:text="Contact the Developer"
                 android:textAllCaps="false"
-                android:textColor="@color/MENU_BUTTON_TEXT" />
+                android:textColor="@color/DISPLAY_INPUT_CONSTANTS"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/ButtonReset"
@@ -437,10 +521,12 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
-                android:background="@drawable/menu_button"
+                android:background="#ededed"
                 android:text="Reset to Default"
                 android:textAllCaps="false"
-                android:textColor="@color/MENU_BUTTON_TEXT" />
+                android:textColor="@color/DISPLAY_INPUT_CONSTANTS"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
     </ScrollView>
